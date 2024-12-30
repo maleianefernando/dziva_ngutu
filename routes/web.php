@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('/utilizadores')->group(function () {
+    Route::post('/criar', [RegisteredUserController::class, 'store']);
+    Route::get('/lista', [RegisteredUserController::class, 'index']);
 });
 
 Route::get('/dashboard', function () {
