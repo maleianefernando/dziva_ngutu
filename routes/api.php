@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,11 @@ Route::prefix('/faculdades')->group(function () {
     Route::post('/criar', [FacultyController::class, 'store']);
     Route::get('/{id}', [FacultyController::class, 'show']);
     Route::put('/editar/{id}', [FacultyController::class, 'update']);
+});
+
+Route::prefix('/cursos')->group(function () {
+    Route::get('/', [CourseController::class, 'index']);
+    Route::post('/criar', [CourseController::class, 'store']);
+    Route::get('/{id}', [CourseController::class, 'show']);
+    Route::put('/editar/{id}', [CourseController::class, 'update']);
 });

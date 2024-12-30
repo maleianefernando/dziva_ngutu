@@ -54,9 +54,14 @@ class FacultyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Faculty $faculty)
+    public function show($id)
     {
-        //
+        try{
+            $faculty = Faculty::find($id);
+            return response()->json($faculty);
+        }catch(Exception $e){
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 
     /**
