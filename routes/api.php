@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,11 @@ Route::prefix('/cursos')->group(function () {
     Route::post('/criar', [CourseController::class, 'store']);
     Route::get('/{id}', [CourseController::class, 'show']);
     Route::put('/editar/{id}', [CourseController::class, 'update']);
+});
+
+Route::prefix('/disciplinas')->group(function () {
+    Route::get('/', [SubjectController::class, 'index']);
+    Route::post('/criar', [SubjectController::class, 'store']);
+    Route::get('/{id}', [SubjectController::class, 'show']);
+    Route::put('/editar/{id}', [SubjectController::class, 'update']);
 });
