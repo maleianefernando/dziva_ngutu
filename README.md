@@ -64,3 +64,19 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Colocar a aplicacao a rodar
+- Instale o composer na raíz do projecto usandoo o comando: 
+<code>composer install</code>
+
+- Renomeie o arquivo na raíz do projecto <code>.env.example</code> para ``` .env ```
+
+- Correr o comando ``` npm install -D tailwindcss postcss autoprefixer ``` para instalar as dependências do tailwind css
+
+- Correr o comando ``` npx tailwindcss init -p ``` para inicializar o tailwind css
+
+- Correr o comando ``` npm run build ```
+
+- correr o comando ``` npm run dev ``` para testar o tailwind.
+
+- Agora pode correr o comando ``` php artisan serve ``` para ter acesso a aplicação
