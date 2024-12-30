@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('file_name');
             $table->string('size');
             $table->string('extension');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('mime_type');
-            $table->unsignedBigInteger('views');
+            $table->unsignedBigInteger('views')->default(0);
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
