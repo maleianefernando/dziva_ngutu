@@ -1,3 +1,4 @@
+
 <div
   x-show="loaded"
   x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"

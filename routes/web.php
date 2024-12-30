@@ -50,7 +50,7 @@ Route::get('/cadeira', function () {
 
 Route::get('/material', function () {
     return view('admin.doc-upload');
-})->name('material');
+})->name('material');//
 
 Route::get('/dashboard', function () {
     return view('dashboard');
