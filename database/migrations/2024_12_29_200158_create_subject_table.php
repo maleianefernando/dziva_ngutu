@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('year')->nullable();
             $table->foreign('course_id')
                     ->references('id')
-                    ->on('course')
+                    ->on('courses')
                     ->onUpdate('cascade');
             $table->timestamps();
         });
