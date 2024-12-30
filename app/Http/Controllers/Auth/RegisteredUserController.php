@@ -45,8 +45,8 @@ class RegisteredUserController extends Controller
                 'lastname' => ['required', 'string', 'max:255'],
                 'role' => ['required', 'string'],
                 'type' => ['required', 'string'],
-                'faculty_id' => ['integer'],
-                'course_id' => ['integer'],
+                'faculty_id' => ['numeric'],
+                'course_id' => ['numeric'],
             ]);
 
             DB::beginTransaction();

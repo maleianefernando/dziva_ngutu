@@ -34,6 +34,8 @@ class FacultyController extends Controller
         try{
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
+                'location' => ['string', 'nullable'],
+                'phone' => ['string', 'nullable'],
             ]);
 
             DB::beginTransaction();
@@ -81,6 +83,8 @@ class FacultyController extends Controller
             $faculty = Faculty::find($id)->first();
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
+                'location' => ['string', 'nullable'],
+                'phone' => ['string', 'nullable'],
             ]);
 
             DB::beginTransaction();

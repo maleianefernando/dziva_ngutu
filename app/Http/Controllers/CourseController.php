@@ -35,7 +35,8 @@ class CourseController extends Controller
         try{
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
-                'faculty_id' => ['required', 'integer'],
+                'faculty_id' => ['required', 'numeric'],
+                'duration' => ['numeric', 'nullable'],
             ]);
 
             $faculty = Faculty::where('id', $request->faculty_id);
@@ -88,6 +89,7 @@ class CourseController extends Controller
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'faculty_id' => ['required', 'integer'],
+                'duration' => ['string', 'nullable'],
             ]);
 
             $course = Course::find($id)->first();
