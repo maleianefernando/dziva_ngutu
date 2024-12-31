@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,7 +66,7 @@
                     class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
                   >
                     <div
-                      class="border-b border-stroke px-7 py-4 dark:border-strokedark"
+                      class="border-b border-stroke px-4 py-4 dark:border-strokedark"
                     >
                       <h3 class="font-medium text-black dark:text-white">
                         Para ver Ficheiros Anteriormente Submetidos
@@ -93,7 +92,7 @@
                             <option value="5" class="text-body">Quinto Ano</option>
                         </select>
                         <span
-                            class="absolute right-4 top-1/2 z-30 -translate-y-1/2"
+                            class="absolute right-4 top-1/2 z-30-translate-y-1/2"
                         >
                             <svg
                             class="fill-current"
@@ -116,17 +115,17 @@
                         </div>
                     </div>
                     </div>
-                    <div class="p-7">
+                    <div class="p-4">
                       <table class="w-full table-auto">
                         <thead>
                             <tr class="bg-gray-2 text-left dark:bg-meta-4">
                             <th
-                                class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
+                                class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white"
                             >
                                 Nome
                             </th>
                             
-                            <th class="px-4 py-4 font-medium text-black dark:text-white">
+                            <th class="px-2 py-4 font-medium text-black dark:text-white ">
                                 Ação
                             </th>
                             </tr>
@@ -134,7 +133,7 @@
                       </thead>
                       <tbody>
                             <tr>
-                              <td class="px-4 py-5 pl-9 xl:pl-11">
+                              <td class="">
                                   <h5 class="font-medium text-black dark:text-white">
                                     Nome do doc.
                                   </h5>
@@ -142,7 +141,7 @@
                                     Descição do doc.
                                   </p>
                               </td>
-                              <td class="px-4 py-5">
+                              <td class="px-2 py-5">
                                   <div class="flex items-center space-x-3.5">
                                   <button class="hover:text-primary">
                                       <svg
