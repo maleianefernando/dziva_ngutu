@@ -48,7 +48,7 @@
         <div class="relative">
           <button 
             class="absolute left-0 top-1/2 -translate-y-1/2"
-            style="margin-left: 10px"
+            style="margin-left: 10px"  
           >
             <svg
               class="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary"
@@ -76,8 +76,7 @@
           <input
             type="text"
             placeholder="Type to search..."
-            {{-- class="w-full bg-transparent pl-9 pr-4 border-none focus:outline-none xl:w-125 " --}}
-            class="w-full bg-transparent pl-9 pr-4 rounded-full shadow-none xl:w-125"
+            class="w-full bg-transparent pl-9 pr-4 rounded-full focus:outline-none xl:w-125"
             style="border: none"
           />
         </div>
@@ -155,11 +154,11 @@
             <span class="block text-sm font-medium text-black dark:text-white"
               >Thomas Anree</span
             >
-            <span class="block text-xs font-medium">Admin</span>
+            <span class="block text-xs font-medium">Docente</span>
           </span>
 
-          {{-- <span class="h-12 w-12 rounded-full">
-            <img src="./images/user/user-01.png" alt="User" />
+          {{-- <span class="h-12 w-12 flex justify-center items-center rounded-full">
+            TA
           </span> --}}
 
           <svg
@@ -190,7 +189,7 @@
           >
             <li>
               <a
-                href="{{route('admin.perfil')}}"
+                href="{{route('professor.perfil')}}"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
@@ -241,7 +240,7 @@
                 fill=""
               />
             </svg>
-            sair
+            Sair
           </a>
         </div>
         <!-- Dropdown End -->
