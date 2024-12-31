@@ -49,7 +49,52 @@ Route::get('/cadeira', function () {
 
 Route::get('/material', function () {
     return view('admin.doc-upload');
-})->name('material');//
+})->name('material');
+
+
+
+
+
+Route::get('/professor/material', function () {
+    return view('professor.doc-upload');
+})->name('professor.material');
+
+Route::get('/professor/listar', function () {
+    return view('professor.doc-list');
+})->name('professor.materialview');
+
+
+
+
+Route::get('/estudante/material', function () {
+    return view('student.doc-list');
+})->name('student.material');
+
+
+
+
+
+
+
+
+Route::get('/estudante/perfil', function () {
+    return view('student.settings');
+})->name('estudante.perfil');
+
+Route::get('/professor/perfil', function () {
+    return view('professor.settings');
+})->name('professor.perfil');
+
+Route::get('/admin/perfil', function () {
+    return view('admin.settings');
+})->name('admin.perfil');
+
+// Route::get('/professor/listar', function () {
+//     return view('professor.doc-list');
+// })->name('professor.materialview');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

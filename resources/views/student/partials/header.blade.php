@@ -3,7 +3,7 @@
   class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none"
 >
   <div
-    class="flex flex-grow items-center justify-between px-4 py-5 shadow-2 md:px-6 2xl:px-11"
+    class="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11"
   >
     <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
       <!-- Hamburger Toggle BTN -->
@@ -43,6 +43,9 @@
         <img src="./images/logo/logo-icon.svg" alt="Logo" />
       </a>
     </div>
+    <a href="{{route('student.material')}}" class="flex overflow-hidden rounded-sm bg-white">
+      <img src="{{asset('images/logo/up.png')}}" width="60px" height="60px" alt="Logo" />
+    </a>
     <div class="hidden sm:block">
       <form action="https://formbold.com/s/unique_form_id" method="POST">
         <div class="relative">
@@ -75,9 +78,8 @@
 
           <input
             type="text"
-            placeholder="Type to search..."
-            {{-- class="w-full bg-transparent pl-9 pr-4 border-none focus:outline-none xl:w-125 " --}}
-            class="w-full bg-transparent pl-9 pr-4 rounded-full shadow-none xl:w-125"
+            placeholder="Procure aqui..."
+            class="w-full bg-transparent pl-9 pr-4 rounded-full focus:outline-none xl:w-125"
             style="border: none"
           />
         </div>
@@ -155,11 +157,11 @@
             <span class="block text-sm font-medium text-black dark:text-white"
               >Thomas Anree</span
             >
-            <span class="block text-xs font-medium">Admin</span>
+            <span class="block text-xs font-medium">FET</span>
           </span>
 
-          {{-- <span class="h-12 w-12 rounded-full">
-            <img src="./images/user/user-01.png" alt="User" />
+          {{-- <span class="h-12 w-12 flex justify-center items-center rounded-full">
+            TA
           </span> --}}
 
           <svg
@@ -190,10 +192,10 @@
           >
             <li>
               <a
-                href="{{route('admin.perfil')}}"
+                href="{{route('estudante.perfil')}}"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
-                <svg
+              <svg
                   class="fill-current"
                   width="20"
                   height="20"
@@ -241,7 +243,7 @@
                 fill=""
               />
             </svg>
-            sair
+            Sair
           </a>
         </div>
         <!-- Dropdown End -->

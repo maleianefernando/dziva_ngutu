@@ -18,14 +18,13 @@
   >
     <!-- ===== Preloader Start ===== -->
     <include src="./partials/preloader.html"></include>
-    @include('admin.partials.preloader')
+    @include('student.partials.preloader')
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
-      <include src="./partials/sidebar.html"></include>
-      @include('admin.partials.sidebar')
+      
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->
@@ -34,7 +33,7 @@
       >
         <!-- ===== Header Start ===== -->
         <include src="./partials/header.html" />
-        @include('admin.partials.header')
+        @include('student.partials.header')
         <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
@@ -46,7 +45,7 @@
                 class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
                 <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                  Settings Page
+                  Perfil
                 </h2>
 
                 <nav>
@@ -54,7 +53,7 @@
                     <li>
                       <a class="font-medium" href="index.html">Dashboard /</a>
                     </li>
-                    <li class="font-medium text-primary">Settings</li>
+                    <li class="font-medium text-primary">Perfil</li>
                   </ol>
                 </nav>
               </div>
@@ -70,7 +69,7 @@
                       class="border-b border-stroke px-7 py-4 dark:border-strokedark"
                     >
                       <h3 class="font-medium text-black dark:text-white">
-                        Personal Information
+                        Informações Pessoais
                       </h3>
                     </div>
                     <div class="p-7">

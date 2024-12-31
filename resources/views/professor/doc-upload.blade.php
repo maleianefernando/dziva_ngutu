@@ -17,14 +17,14 @@
   >
     <!-- ===== Preloader Start ===== -->
     <include src="./partials/preloader.html"></include>
-    @include('admin.partials.preloader')
+    @include('professor.partials.preloader')
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
       <include src="./partials/sidebar.html"></include>
-      @include('admin.partials.sidebar')
+      @include('professor.partials.sidebar')
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->
@@ -33,7 +33,7 @@
       >
         <!-- ===== Header Start ===== -->
         <include src="./partials/header.html" />
-        @include('admin.partials.header')
+        @include('professor.partials.header')
         <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
