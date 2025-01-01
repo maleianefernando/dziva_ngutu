@@ -52,10 +52,6 @@ Route::get('/material', function () {
     return view('admin.doc-upload');
 })->name('material');
 
-
-
-
-
 Route::get('/professor/material', function () {
     return view('professor.doc-upload');
 })->name('professor.material');
@@ -64,19 +60,13 @@ Route::get('/professor/listar', function () {
     return view('professor.doc-list');
 })->name('professor.materialview');
 
-
-
+Route::get('/estudante/inicio', function () {
+    return view('student.student');
+})->name('student.home');
 
 Route::get('/estudante/material', function () {
     return view('student.doc-list');
 })->name('student.material');
-
-
-
-
-
-
-
 
 Route::get('/estudante/perfil', function () {
     return view('student.settings');
