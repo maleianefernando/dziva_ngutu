@@ -41,13 +41,18 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
+            @if(Session('success'))
+                @include('components.success-alert')
+            @elseif (session('error'))
+                @include('components.error-alert')
+            @endif
         <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
             <!-- Breadcrumb Start -->
             <div
             class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Formulário de Registo
+                Registar Faculdades
             </h2>
 
             <nav>
@@ -75,7 +80,8 @@
                             Registe a Faculdade
                         </h3>
                     </div>
-                    <form action="#">
+                    <form action="{{ route('faculdade.criar') }}" method="POST">
+                        @csrf
                         <div class="p-6.5">
                             <div class="mb-4.5">
                                 <label
@@ -85,8 +91,8 @@
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Nome"
-                                    name=""
+                                    placeholder="Ex: Faculdade De Engenharias e Tecnologias"
+                                    name="name"
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
@@ -99,8 +105,8 @@
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Maputo/exemplo"
-                                    name=""
+                                    placeholder="Ex: Maputo, Av. Trabalho nr 1132"
+                                    name="location"
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
@@ -114,7 +120,7 @@
                                 <input
                                     type="text"
                                     placeholder="8* 111 1111"
-                                    name=""
+                                    name="phone"
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>

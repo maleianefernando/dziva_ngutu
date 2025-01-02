@@ -45,9 +45,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
         Route::get('/estudante', [UserController::class, 'createStudent'])->name('registar.estudante');
 
-        Route::get('/facudade', function () {
-            return view('admin.registar-faculdade');
-        })->name('registar.faculdade');
+        Route::get('/facudade', [FacultyController::class, 'create'])->name('registar.faculdade');
 
         Route::get('/curso', function () {
             return view('admin.registar-curso');
@@ -64,9 +62,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/estudantes', [UserController::class, 'indexOfStudent'])->name('listar.estudante');
 
-    Route::get('/faculdades', function () {
-        return view('admin.listar-faculdade');
-    })->name('listar.faculdade');
+    Route::get('/faculdades', [FacultyController::class, 'index'])->name('listar.faculdade');
 
     Route::get('/cursos', function () {
         return view('admin.listar-curso');
@@ -121,8 +117,8 @@ Route::prefix('/utilizadores')->group(function () {
 });
 
 Route::prefix('/faculdades')->group(function () {
-    Route::get('/', [FacultyController::class, 'index']);
-    Route::post('/criar', [FacultyController::class, 'store']);
+    Route::get('/', [FacultyController::class, 'index'])->name('faculdade.listar');
+    Route::post('/criar', [FacultyController::class, 'store'])->name('faculdade.criar');
     Route::get('/{id}', [FacultyController::class, 'show']);
     Route::put('/editar/{id}', [FacultyController::class, 'update']);
 });
