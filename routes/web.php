@@ -65,9 +65,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/cadeiras', [SubjectController::class, 'index'])->name('listar.cadeira');
 
-    Route::get('/materials', function () {
-        return view('admin.doc-upload');
-    })->name('admin.material');
+    Route::get('/materials', [DocumentController::class, 'index'])->name('admin.material');
 });
 
 
