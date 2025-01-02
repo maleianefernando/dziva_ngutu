@@ -8,6 +8,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
+use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,9 +50,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
         Route::get('/curso', [CourseController::class, 'create'])->name('registar.curso');
 
-        Route::get('/cadeira', function () {
-            return view('admin.registar-cadeira');
-        })->name('registar.cadeira');
+        Route::get('/cadeira', [SubjectController::class, 'create'])->name('registar.cadeira');
     });
 
     Route::get('/perfil', [ProfileController::class, 'editAdmin'])->name('admin.perfil');
@@ -64,9 +63,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/cursos', [CourseController::class, 'index'])->name('listar.cursos');
 
-    Route::get('/cadeiras', function () {
-        return view('admin.listar-cadeira');
-    })->name('listar.cadeira');
+    Route::get('/cadeiras', [SubjectController::class, 'index'])->name('listar.cadeira');
 
     Route::get('/materials', function () {
         return view('admin.doc-upload');
@@ -128,7 +125,7 @@ Route::prefix('/cursos')->group(function () {
 
 Route::prefix('/disciplinas')->group(function () {
     Route::get('/', [SubjectController::class, 'index']);
-    Route::post('/criar', [SubjectController::class, 'store']);
+    Route::post('/criar', [SubjectController::class, 'store'])->name('disciplinas.registar');
     Route::get('/{id}', [SubjectController::class, 'show']);
     Route::put('/editar/{id}', [SubjectController::class, 'update']);
 });

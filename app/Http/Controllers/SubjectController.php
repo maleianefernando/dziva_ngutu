@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Faculty;
 use App\Models\Subject;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class SubjectController extends Controller
 {
@@ -16,7 +18,8 @@ class SubjectController extends Controller
     public function index()
     {
         $subjects = Subject::all();
-        return response()->json($subjects);
+        return view('admin.listar-cadeira', compact('subjects'));
+        // return response()->json($subjects);
     }
 
     /**
@@ -24,7 +27,9 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        $faculties = Faculty::all();
+        $courses = Course::all();
+        return view('admin.registar-cadeira', compact('courses', 'faculties'));
     }
 
     /**
@@ -38,6 +43,11 @@ class SubjectController extends Controller
                 'course_id' => ['required', 'integer'],
                 'semester' => ['numeric', 'nullable'],
                 'year' => ['numeric', 'nullable'],
+            ],[
+                'name.required' => 'É obrigatório preencher o nome da cadeira!',
+                'name.max' => 'O nome da cadeira deve ter um máximo de 255 caracteres!',
+                'course_id.required' => 'É obrigatório indicar o curso!',
+                'course_id.integer' => 'É obrigatório indicar o curso!',
             ]);
 
             $course = Course::where('id', $request->course_id)->get()->first();
@@ -56,13 +66,17 @@ class SubjectController extends Controller
                 ]);
                 DB::commit();
 
-                return response()->json($subject);
+                $message = "A Cadeira ($request->name) foi registada com sucesso!";
+                return Redirect::back()->with('success', 'success')->with('message', $message);
+                // return response()->json($subject);
             } else {
-                return response()->json(['error' => 'Verify if the course id exists']);
+                return Redirect::back()->with('error', 'error')->with('message', 'Verifique se essa cadeira não existe!')->withInput();
+                // return response()->json(['error' => 'Verify if the course id exists']);
             }
         }catch(Exception $e){
             DB::rollBack();
-            return response()->json(['error' => $e->getMessage()]);
+            return Redirect::back()->with('error', 'error')->with('message', $e->getMessage())->withInput();
+            // return response()->json(['error' => $e->getMessage()]);
         }
     }
 
