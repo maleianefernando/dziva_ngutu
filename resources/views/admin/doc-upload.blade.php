@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Settings | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+    <title>Upload | Dziva Ngutu</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
 
@@ -51,7 +51,7 @@
                 <nav>
                   <ol class="flex items-center gap-2">
                     <li>
-                      <a class="font-medium" href="index.html">Dashboard /</a>
+                      <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
                     </li>
                     <li class="font-medium text-primary">Subir Ficheiro</li>
                   </ol>
@@ -72,7 +72,7 @@
                         Para ver Ficheiros Anteriormente Submetidos
                       </h3>
                       <div >
-                        
+
                         <div
                         x-data="{ isOptionSelected: false }"
                         class="relative z-20 bg-transparent dark:bg-form-input"
@@ -124,7 +124,7 @@
                             >
                                 Nome
                             </th>
-                            
+
                             <th class="px-2 py-4 font-medium text-black dark:text-white ">
                                 Ação
                             </th>
@@ -241,7 +241,7 @@
                             class="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent font-normal outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:px-5 file:py-3 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
                           />
                         </div>
-                        
+
                         <div >
                             <label
                                 class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -255,7 +255,7 @@
                                 class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                         </div>
-                        
+
                         <div >
                             <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"

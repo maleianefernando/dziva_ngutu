@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
-    </title>
+      Registar Curso | Dziva Ngutu
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
 
@@ -50,7 +49,7 @@
             <nav>
                 <ol class="flex items-center gap-2">
                 <li>
-                    <a class="font-medium" href="index.html">Dashboard /</a>
+                    <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
                 </li>
                 <li class="font-medium text-primary">Registar Curso</li>
                 </ol>
@@ -87,7 +86,7 @@
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
-                            
+
                             <div class="mb-4.5">
                                 <label
                                     class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -101,7 +100,7 @@
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
-                            
+
                             <div class="mb-4.5">
                                 <label
                                 class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -124,7 +123,7 @@
                                     <option value="" class="text-body">UK</option>
                                     <option value="" class="text-body">Canada</option>
                                 </select>
-                                
+
                                 </div>
                             </div>
                             <button

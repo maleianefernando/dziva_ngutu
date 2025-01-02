@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        Registar Docente
+        Registar Docente | Dziva Ngutu
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
@@ -22,14 +22,14 @@
     <include src="./partials/preloader.html"></include>
     @include('admin.partials.preloader')
     <!-- ===== Preloader End ===== -->
-    
+
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
       <include src="./partials/sidebar.html"></include>
       @include('admin.partials.sidebar')
       <!-- ===== Sidebar End ===== -->
-      
+
       <!-- ===== Content Area Start ===== -->
       <div
       class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
@@ -53,7 +53,7 @@
               <nav>
                 <ol class="flex items-center gap-2">
                   <li>
-                    <a class="font-medium" href="index.html">Dashboard /</a>
+                    <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
                   </li>
                   <li class="font-medium text-primary">Registar Docente</li>
                 </ol>
@@ -91,7 +91,7 @@
                                 class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                               />
                             </div>
-    
+
                             <div class="w-full xl:w-1/2">
                               <label
                                 class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -106,7 +106,7 @@
                               />
                             </div>
                           </div>
-    
+
                           <div class="mb-4.5">
                             <label
                               class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -120,7 +120,7 @@
                               class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                           </div>
-    
+
                             <div class="mb-4.5">
                                 <label
                                 class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                           </div>
-    
+
                           <button
                             type="submit"
                             class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"

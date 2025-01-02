@@ -78,9 +78,9 @@ class RegisteredUserController extends Controller
                 'course_id' => $request->course_id,
             ]);
             DB::commit();
-            event(new Registered($user));
+            // event(new Registered($user));
 
-            Auth::login($user);
+            // Auth::login($user);
 
             // return response()->json($user);
             $message = 'Utilizador registado com sucesso!';

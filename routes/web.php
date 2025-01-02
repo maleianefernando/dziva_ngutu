@@ -23,7 +23,7 @@ Route::get('/', function () {
         Auth::logout();
         return view('auth.login');
     }
-})->middleware('auth');
+})->name('index')->middleware('auth');
 
 Route::get('/redirect_user_by_role', function (){
     $user = Auth::user();
@@ -57,6 +57,8 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
             return view('admin.registar-cadeira');
         })->name('registar.cadeira');
     });
+
+    Route::get('/perfil', [ProfileController::class, 'editAdmin'])->name('admin.perfil');
 
     Route::get('/docentes', function () {
         return view('admin.listar-docente');
@@ -105,10 +107,6 @@ Route::get('/estudante/perfil', function () {
 Route::get('/professor/perfil', function () {
     return view('professor.settings');
 })->name('professor.perfil');
-
-Route::get('/admin/perfil', function () {
-    return view('admin.settings');
-})->name('admin.perfil');
 
 // Route::get('/professor/listar', function () {
 //     return view('professor.doc-list');

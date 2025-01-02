@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+    <title>Perfil | Dziva Ngutu</title>
   </head>
 
   <body
@@ -48,7 +48,7 @@
                 <nav>
                   <ol class="flex items-center gap-2">
                     <li>
-                      <a class="font-medium" href="index.html">Dashboard /</a>
+                        <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
                     </li>
                     <li class="text-primary">Profile</li>
                   </ol>
