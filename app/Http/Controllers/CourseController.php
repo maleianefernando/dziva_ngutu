@@ -7,6 +7,7 @@ use App\Models\Faculty;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class CourseController extends Controller
 {
@@ -16,7 +17,8 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        return response()->json($courses);
+        return view('admin.listar-curso', compact('courses'));
+        // return response()->json($courses);
     }
 
     public function search_by_faculty($faculty_id) {
@@ -29,7 +31,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $faculties = Faculty::all();
+        return view('admin.registar-curso', compact('faculties'));
     }
 
     /**
@@ -42,6 +45,11 @@ class CourseController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'faculty_id' => ['required', 'numeric'],
                 'duration' => ['numeric', 'nullable'],
+            ],[
+                'name.required' => 'É obrigatório preencher o nome do curso!',
+                'name.max' => 'O nome do curso deve ter um máximo de 255 caracteres',
+                'faculty_id.required' => 'Por favor, selecione uma faculdade!',
+                'faculty_id.numeric' => 'Ocorreu um erro ao selecionar a faculdade!',
             ]);
 
             $faculty = Faculty::where('id', $request->faculty_id);
@@ -54,13 +62,17 @@ class CourseController extends Controller
                 ]);
                 DB::commit();
 
-                return response()->json($course);
+                // return response()->json($course);
+                $message = "O curso ($request->name) foi registada com sucesso!";
+                return Redirect::back()->with('success', 'success')->with('message', $message);
             } else {
-                return response()->json(['error' => 'Verify if the faculty id exists']);
+                // return response()->json(['error' => 'Verify if the faculty id exists']);
+                return Redirect::back()->with('error', 'error')->with('message', 'Esta faculdade já existe')->withInput();
             }
         }catch(Exception $e){
             DB::rollBack();
-            return response()->json(['error' => $e->getMessage()]);
+            // return response()->json(['error' => $e->getMessage()]);
+            return Redirect::back()->with('error', 'error')->with('message', $e->getMessage())->withInput();
         }
     }
 
