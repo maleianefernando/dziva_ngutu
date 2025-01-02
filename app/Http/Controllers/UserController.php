@@ -12,9 +12,10 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function indexOfTeacher()
     {
-        //
+        $users = User::where('type', 'docente')->get();
+        return view('admin.listar-docente', compact('users'));
     }
 
     public function indexOfStudent(){
@@ -34,7 +35,8 @@ class UserController extends Controller
      */
     public function createTeacher()
     {
-        return view('admin.registar-docente');
+        $faculties = Faculty::all();
+        return view('admin.registar-docente', compact('faculties'));
     }
 
     public function createStudent()

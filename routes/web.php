@@ -60,9 +60,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
     Route::get('/perfil', [ProfileController::class, 'editAdmin'])->name('admin.perfil');
 
-    Route::get('/docentes', function () {
-        return view('admin.listar-docente');
-    })->name('listar.docente');
+    Route::get('/docentes', [UserController::class, 'indexOfTeacher'])->name('listar.docente');
 
     Route::get('/estudantes', [UserController::class, 'indexOfStudent'])->name('listar.estudante');
 

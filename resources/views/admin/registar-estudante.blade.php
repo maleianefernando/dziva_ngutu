@@ -81,7 +81,7 @@
                             Registe o Estudante
                         </h3>
                     </div>
-                    <form action="/utilizadores/criar" method="POST">
+                    <form action="{{ route('utilizadores.criar') }}" method="POST">
                         @csrf
                         <div class="p-6.5">
                         <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
