@@ -8,7 +8,6 @@
     <title>Tables | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
-
   <body
     x-data="{ page: 'listarEstudante', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
@@ -45,7 +44,7 @@
               class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
               <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Tables
+                Estudantes
               </h2>
 
               <nav>
@@ -75,6 +74,11 @@
                                 Nome
                             </th>
                             <th
+                                class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
+                            >
+                                Faculdade
+                            </th>
+                            <th
                                 class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
                             >
                                 Curso
@@ -90,18 +94,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($users as $u)
+
                             <tr>
                                 <td
                                     class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
                                 >
-                                    <h5 class="font-medium text-black dark:text-white">Paito</h5>
+                                    <h5 class="font-medium text-black dark:text-white">
+                                        {{ $u->name.' '.$u->lastname }}
+                                    </h5>
                                     <!-- <p class="text-sm">$0.00</p> -->
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                    FET
+                                    {{ \App\Models\Faculty::where('id', $u->faculty_id)->first()->name }}
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                    <p class="text-black dark:text-white">Jan 13,2023</p>
+                                    {{ \App\Models\Course::where('id', $u->course_id)->first()->name }}
+                                </td>
+                                <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                                    <p class="text-black dark:text-white">
+                                        {{ $u->updated_at }}
+                                    </p>
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                     <div class="flex items-center space-x-3.5">
@@ -138,6 +151,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                         </table>
                     </div>

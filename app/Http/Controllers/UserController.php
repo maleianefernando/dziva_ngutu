@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faculty;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,6 +15,18 @@ class UserController extends Controller
     public function index()
     {
         //
+    }
+
+    public function indexOfStudent(){
+        $users = User::where('type', 'estudante')->get();
+        foreach($users as $user){
+            $date = $user->created_at;
+            $date = Carbon::parse($date);
+            $date = $date->format('d-m-Y');
+            // dd($date);
+            $user->created_at = $date;
+        }
+        return view('admin.listar-estudante', compact('users'));
     }
 
     /**

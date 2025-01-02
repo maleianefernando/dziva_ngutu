@@ -62,9 +62,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
         return view('admin.listar-docente');
     })->name('listar.docente');
 
-    Route::get('/estudantes', function () {
-        return view('admin.listar-estudante');
-    })->name('listar.estudante');
+    Route::get('/estudantes', [UserController::class, 'indexOfStudent'])->name('listar.estudante');
 
     Route::get('/faculdades', function () {
         return view('admin.listar-faculdade');
