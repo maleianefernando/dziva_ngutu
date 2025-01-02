@@ -18,8 +18,8 @@
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
-    <!-- ===== Preloader Start ===== -->
-    <include src="./partials/preloader.html"></include>
+  <!-- ===== Preloader Start ===== -->
+  <include src="./partials/preloader.html"></include>
     @include('admin.partials.preloader')
     <!-- ===== Preloader End ===== -->
 
@@ -41,13 +41,19 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
+            @if(Session('success'))
+                @include('components.success-alert')
+            @elseif (session('error'))
+                @include('components.error-alert')
+            @endif
         <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
             <!-- Breadcrumb Start -->
             <div
             class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
+            {{-- Mensagem de alerta --}}
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Formulário de Registo
+                Registar Estudante
             </h2>
 
             <nav>
@@ -75,7 +81,8 @@
                             Registe o Estudante
                         </h3>
                     </div>
-                    <form action="{{ route('utilizadores.criar') }}" method="POST">
+                    <form action="/utilizadores/criar" method="POST">
+                        @csrf
                         <div class="p-6.5">
                         <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
                             <div class="w-full xl:w-1/2">
@@ -88,6 +95,7 @@
                                 type="text"
                                 placeholder="Primeiro Nome"
                                 name="name"
+                                value="{{ @old('name') }}"
                                 class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                             </div>
@@ -102,7 +110,9 @@
                                 type="text"
                                 placeholder="Apelido"
                                 name="lastname"
+                                value="{{ @old('lastname') }}"
                                 class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                id="lastname"
                             />
                             </div>
                         </div>
@@ -117,6 +127,7 @@
                             type="email"
                             placeholder="abc@exemplo.ac.mz"
                             name="email"
+                            value="{{ @old('email') }}"
                             class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                         </div>
@@ -138,7 +149,7 @@
                                 name="faculty_id"
                                 id="faculty"
                             >
-                                <option value="" class="text-body">
+                                <option value="faculdade" class="text-body">
                                 -- Selecione a faculdade
                                 </option>
                                 @foreach ($faculties as $faculty)
@@ -186,7 +197,7 @@
                                 name="course_id"
                                 id="course"
                             >
-                                <option value="" class="text-body">
+                                <option value="curso" class="text-body">
                                 -- Selecione o Curso
                                 </option>
                             </select>
@@ -234,6 +245,28 @@
                             />
                         </div>
 
+                        <div class="mb-4.5">
+                            <input
+                            type="text"
+                            name="password"
+                            value=""
+                            value="{{ @old('password') }}"
+                            class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            id="password"
+                            style="display: none;"
+                            />
+
+                            <input
+                            type="text"
+                            name="password_confirmation"
+                            value=""
+                            value="{{ @old('password_confirmation') }}"
+                            class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            id="password_confirmation"
+                            style="display: none;"
+                            />
+                        </div>
+
                         <button
                             type="submit"
                             class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
@@ -256,6 +289,7 @@
 
     <script>
     fillCourseSelect();
+    createPassword();
 
     function fillCourseSelect() {
         const facultySelect = document.getElementById('faculty');
@@ -266,7 +300,7 @@
             .then(response => response.json())
             .then(courses => {
                 courseSelect.innerHTML = `
-                <option value="" class="text-body">
+                <option value="curso" class="text-body">
                 -- Selecione o Curso
                 </option>`;
                 courses.forEach(e => {
@@ -278,6 +312,37 @@
                 });
             })
         })
+    }
+
+    function createPassword() {
+        const password = document.getElementById('password');
+        const confirmation = document.getElementById('password_confirmation');
+        const lastname = document.getElementById('lastname');
+        lastname.addEventListener('keyup', () => {
+            if(lastname.value.length < 8){
+                password.value = `${lastname.value.toLowerCase()}${lastname.value.toLowerCase()}`;
+                confirmation.value = password.value;
+            } else {
+                password.value = lastname.value.toLowerCase();
+                confirmation.value = password.value;
+            }
+            console.log(password.value.length)
+            console.log(password.value)
+        })
+    }
+
+    window.onload = () => {
+        const lastname = document.getElementById('lastname');
+        const password = document.getElementById('password');
+        const confirmation = document.getElementById('password_confirmation');
+
+        if(lastname.value.length < 8){
+            password.value = `${lastname.value.toLowerCase()}${lastname.value.toLowerCase()}`;
+            confirmation.value = password.value;
+        } else {
+            password.value = lastname.value.toLowerCase();
+            confirmation.value = password.value;
+        }
     }
 
     function dropdown() {

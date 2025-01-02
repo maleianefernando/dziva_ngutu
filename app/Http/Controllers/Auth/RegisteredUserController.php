@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -37,7 +39,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         try{
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
@@ -48,6 +50,19 @@ class RegisteredUserController extends Controller
                 'type' => ['required', 'string'],
                 'faculty_id' => ['numeric'],
                 'course_id' => ['numeric'],
+            ], [
+                'name.required' => 'O campo de nome é obrigatório!',
+                'name.max' => 'O campo de nome não deve exceder a 255 caracteres!',
+                'lastname.required' => 'O campo de apelido é obrigatório!',
+                'lastname.max' => 'O campo de apelido não deve exceder a 255 caracteres!',
+                'email.required' => 'O campo de email é obrigatório!',
+                'email.lowercase' => 'O campo de email apenas permite letras minusculas!',
+                'email.email' => 'Insira um formato válido de email ex: exemplo@gmail.com!',
+                'email.unique' => 'O email inserido já está registado, insira outro!',
+                'faculty_id.required' => 'O campo de faculdade é obrigatório!',
+                'faculty_id.numeric' => 'É obrigatório selecionar uma faculdade!',
+                'course_id.required' => 'O campo de curso é obrigatório!',
+                'course_id.numeric' => 'É obrigatório selecionar um curso!',
             ]);
 
             DB::beginTransaction();
@@ -67,11 +82,15 @@ class RegisteredUserController extends Controller
 
             Auth::login($user);
 
-            return response()->json($user);
-            // return redirect(route('dashboard', absolute: false));
+            // return response()->json($user);
+            $message = 'Utilizador registado com sucesso!';
+            $message .= Str::length($request->lastname) < 8 ? "\nA sua palavra-passe é o seu apelido duas vezes a mínusculo" : "\nA sua palavra-passe é o seu apelido duas vezes a mínusculo";
+
+            return Redirect::back()->with('success', 'success')->with('message', $message);
         }catch(Exception $e){
             DB::rollBack();
-            return response()->json(['error' => $e->getMessage()]);
+            // return response()->json(['error' => $e->getMessage()]);
+            return Redirect::back()->with('error', 'error')->with('message', $e->getMessage())->withInput();
         }
     }
 

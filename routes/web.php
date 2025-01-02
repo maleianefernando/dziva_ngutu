@@ -39,53 +39,50 @@ Route::get('/redirect_user_by_role', function (){
     }
 })->name('redirect_by_role');
 
-Route::middleware('auth')->group(function () {
+Route::prefix('/admin')->middleware('auth')->group(function () {
+    Route::prefix('/registar')->group(function () {
+        Route::get('/docente', [UserController::class, 'createTeacher'])->name('registar.docente');
 
-    Route::get('registar/docente', [UserController::class, 'createTeacher'])->name('registar.docente');
+        Route::get('/estudante', [UserController::class, 'createStudent'])->name('registar.estudante');
 
-    Route::get('registar/estudante', [UserController::class, 'createStudent'])->name('registar.estudante');
+        Route::get('/facudade', function () {
+            return view('admin.registar-faculdade');
+        })->name('registar.faculdade');
 
-    Route::get('registar/facudade', function () {
-        return view('admin.registar-faculdade');
-    })->name('registar.faculdade');
+        Route::get('/curso', function () {
+            return view('admin.registar-curso');
+        })->name('registar.curso');
 
-    Route::get('registar/curso', function () {
-        return view('admin.registar-curso');
-    })->name('registar.curso');
-
-    Route::get('registar/cadeira', function () {
-        return view('admin.registar-cadeira');
-    })->name('registar.cadeira');
-    Route::prefix('/registar', function (){
-
+        Route::get('/cadeira', function () {
+            return view('admin.registar-cadeira');
+        })->name('registar.cadeira');
     });
+
+    Route::get('/docentes', function () {
+        return view('admin.listar-docente');
+    })->name('listar.docente');
+
+    Route::get('/estudantes', function () {
+        return view('admin.listar-estudante');
+    })->name('listar.estudante');
+
+    Route::get('/faculdades', function () {
+        return view('admin.listar-faculdade');
+    })->name('listar.faculdade');
+
+    Route::get('/cursos', function () {
+        return view('admin.listar-curso');
+    })->name('listar.curso');
+
+    Route::get('/cadeiras', function () {
+        return view('admin.listar-cadeira');
+    })->name('listar.cadeira');
+
+    Route::get('/materials', function () {
+        return view('admin.doc-upload');
+    })->name('admin.material');
 });
 
-
-
-Route::get('/docente', function () {
-    return view('admin.listar-docente');
-})->name('listar.docente');
-
-Route::get('/estudante', function () {
-    return view('admin.listar-estudante');
-})->name('listar.estudante');
-
-Route::get('/faculdade', function () {
-    return view('admin.listar-faculdade');
-})->name('listar.faculdade');
-
-Route::get('/curso', function () {
-    return view('admin.listar-curso');
-})->name('listar.curso');
-
-Route::get('/cadeira', function () {
-    return view('admin.listar-cadeira');
-})->name('listar.cadeira');
-
-Route::get('/material', function () {
-    return view('admin.doc-upload');
-})->name('material');
 
 Route::get('/professor/material', function () {
     return view('professor.doc-upload');

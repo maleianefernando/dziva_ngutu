@@ -8,7 +8,7 @@
   <div class="flex items-center justify-between gap-2 px-3  py-3 lg:py-3">
     <a
       style="background: white"
-      href="{{route('material')}}" class="w-full flex justify-center items-center overflow-hidden rounded-sm bg-white"
+      href="{{route('admin.material')}}" class="w-full flex justify-center items-center overflow-hidden rounded-sm bg-white"
     >
       <img src="{{asset('images/logo/up.png')}}" width="90px" alt="Logo" />
     </a>
@@ -267,7 +267,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="{{route('material')}}"
+              href="{{route('admin.material')}}"
               @click="selected = (selected === 'docUpload' ? '':'docUpload')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'docUpload') && (page === 'docUpload') }"
               :class="page === 'docUpload' && 'bg-graydark'"
