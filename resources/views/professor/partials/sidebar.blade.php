@@ -180,11 +180,12 @@
 
           <!-- Menu Item Auth Pages -->
           <li>
+            <form action="{{ route('logout') }}" method="POST" id="logout" style="display: none;">
+                @csrf
+            </form>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="{{route('logout')}}"
-              @click.prevent="selected = (selected === 'AuthPages' ? '':'AuthPages')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'AuthPages') || (page === 'register' || page === 'login') }"
+              onclick="document.getElementById('logout').submit()"
             >
               <svg
                 class="fill-current"

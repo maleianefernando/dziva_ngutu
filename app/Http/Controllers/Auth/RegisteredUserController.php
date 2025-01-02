@@ -37,6 +37,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         try{
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
@@ -45,13 +46,8 @@ class RegisteredUserController extends Controller
                 'lastname' => ['required', 'string', 'max:255'],
                 'role' => ['required', 'string'],
                 'type' => ['required', 'string'],
-<<<<<<< HEAD
                 'faculty_id' => ['numeric'],
                 'course_id' => ['numeric'],
-=======
-                'faculty_id' => ['integer'],
-                'course_id' => ['integer'],
->>>>>>> a437146 (dsa)
             ]);
 
             DB::beginTransaction();

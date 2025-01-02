@@ -6,7 +6,7 @@
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-3  py-3 lg:py-3">
-    <a 
+    <a
       style="background: white"
       href="{{route('material')}}" class="w-full flex justify-center items-center overflow-hidden rounded-sm bg-white"
     >
@@ -155,7 +155,7 @@
             <!-- Dropdown Menu End -->
           </li>
           <!-- Menu Item Forms -->
-          
+
           <!-- Menu Item Tables -->
           <li>
             <a
@@ -258,10 +258,10 @@
             </div>
             <!-- Dropdown Menu End -->
           </li>
-          
+
           <!-- Menu Item Tables -->
 
-          
+
 
           <!-- Menu Item UploadFile -->
           <li>
@@ -311,7 +311,7 @@
         <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">OTHERS</h3>
 
         <ul class="mb-6 flex flex-col gap-1.5">
-          
+
 
           <!-- Menu Item Settings -->
           <li>
@@ -352,11 +352,12 @@
 
           <!-- Menu Item Auth Pages -->
           <li>
+            <form action="{{ route('logout') }}" method="POST" id="logout" style="display: none;">
+                @csrf
+            </form>
+
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="{{route('logout')}}"
-              @click.prevent="selected = (selected === 'AuthPages' ? '':'AuthPages')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'AuthPages') || (page === 'register' || page === 'login') }"
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4" onclick="document.getElementById('logout').submit()"
             >
               <svg
                 class="fill-current"

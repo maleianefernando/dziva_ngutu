@@ -19,6 +19,11 @@ class CourseController extends Controller
         return response()->json($courses);
     }
 
+    public function search_by_faculty($faculty_id) {
+        $courses = Course::where('faculty_id', $faculty_id)->get();
+        return response()->json($courses);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
