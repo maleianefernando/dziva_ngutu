@@ -46,7 +46,11 @@
               <nav>
                 <ol class="flex items-center gap-2">
                   <li>
+<<<<<<< HEAD
                     <a class="font-medium" href="index.html">Dashboard /</a>
+=======
+                    <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
+>>>>>>> test
                   </li>
                   <li class="font-medium text-primary">Tables</li>
                 </ol>

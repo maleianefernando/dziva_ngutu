@@ -5,7 +5,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
     <title>Settings | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+=======
+    <title>Conta | Dziva Ngutu</title>
+>>>>>>> test
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
 
@@ -46,15 +50,25 @@
                 class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
                 <h2 class="text-title-md2 font-bold text-black dark:text-white">
+<<<<<<< HEAD
                   Settings Page
+=======
+                  Minha conta
+>>>>>>> test
                 </h2>
 
                 <nav>
                   <ol class="flex items-center gap-2">
                     <li>
+<<<<<<< HEAD
                       <a class="font-medium" href="index.html">Dashboard /</a>
                     </li>
                     <li class="font-medium text-primary">Settings</li>
+=======
+                        <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
+                    </li>
+                    <li class="font-medium text-primary">Conta</li>
+>>>>>>> test
                   </ol>
                 </nav>
               </div>
@@ -70,7 +84,11 @@
                       class="border-b border-stroke px-7 py-4 dark:border-strokedark"
                     >
                       <h3 class="font-medium text-black dark:text-white">
+<<<<<<< HEAD
                         Personal Information
+=======
+                        Informação Pessoal
+>>>>>>> test
                       </h3>
                     </div>
                     <div class="p-7">
@@ -80,7 +98,11 @@
                             <label
                               class="mb-3 block text-sm font-medium text-black dark:text-white"
                               for="fullName"
+<<<<<<< HEAD
                               >Full Name</label
+=======
+                              >Nome Completo</label
+>>>>>>> test
                             >
                             <div class="relative">
                               <span class="absolute left-4.5 top-4">
@@ -113,8 +135,13 @@
                                 type="text"
                                 name="fullName"
                                 id="fullName"
+<<<<<<< HEAD
                                 placeholder="Devid Jhon"
                                 value="Devid Jhon"
+=======
+                                placeholder="Seu nome"
+                                value="{{ $user->name.' '.$user->lastname }}"
+>>>>>>> test
                               />
                             </div>
                           </div>
@@ -123,15 +150,24 @@
                             <label
                               class="mb-3 block text-sm font-medium text-black dark:text-white"
                               for="phoneNumber"
+<<<<<<< HEAD
                               >Phone Number</label
+=======
+                              >{{ $user->role === 'admin' ? 'Privilegio' : 'Ocupação'}}</label
+>>>>>>> test
                             >
                             <input
                               class="w-full rounded border border-stroke bg-gray px-4.5 py-3 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                               type="text"
+<<<<<<< HEAD
                               name="phoneNumber"
                               id="phoneNumber"
                               placeholder="+990 3343 7865"
                               value="+990 3343 7865"
+=======
+                              id="phoneNumber"
+                              value="{{ $user->role === 'admin' ? $user->role : $user->type }}"
+>>>>>>> test
                             />
                           </div>
                         </div>
@@ -140,7 +176,11 @@
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
                             for="emailAddress"
+<<<<<<< HEAD
                             >Email Address</label
+=======
+                            >Endereço de Email</label
+>>>>>>> test
                           >
                           <div class="relative">
                             <span class="absolute left-4.5 top-4">
@@ -171,14 +211,22 @@
                             <input
                               class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                               type="email"
+<<<<<<< HEAD
                               name="emailAddress"
                               id="emailAddress"
                               placeholder="devidjond45@gmail.com"
                               value="devidjond45@gmail.com"
+=======
+                              name="email"
+                              id="emailAddress"
+                              placeholder="devidjond45@gmail.com"
+                              value="{{ $user->email }}"
+>>>>>>> test
                             />
                           </div>
                         </div>
 
+<<<<<<< HEAD
                         <div class="mb-5.5">
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -247,6 +295,39 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                               </textarea
                             >
                           </div>
+=======
+                        <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                            <div class="w-full sm:w-1/2">
+                              <label
+                                class="mb-3 block text-sm font-medium text-black dark:text-white"
+                                for="Username"
+                                >Faculdade</label
+                              >
+                              <input
+                                class="w-full rounded border border-stroke bg-gray px-4.5 py-3 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                                type="text"
+                                name="Username"
+                                id="Username"
+                                placeholder="A faculdade a qual pertence"
+                                value=""
+                              />
+                            </div>
+                            <div class="w-full sm:w-1/2">
+                                <label
+                                  class="mb-3 block text-sm font-medium text-black dark:text-white"
+                                  for="Username"
+                                  >Curso</label
+                                >
+                                <input
+                                  class="w-full rounded border border-stroke bg-gray px-4.5 py-3 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                                  type="text"
+                                  name="Username"
+                                  id="Username"
+                                  placeholder="O curso que frequenta"
+                                  value=""
+                                />
+                            </div>
+>>>>>>> test
                         </div>
 
                         <div class="flex justify-end gap-4.5">
@@ -280,7 +361,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                     </div>
                     <div class="p-7">
                       <form action="#">
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> test
                         <div class="mb-5.5">
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -296,7 +381,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                             value=""
                           />
                         </div>
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> test
                         <div class="mb-5.5">
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -312,7 +401,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                             value=""
                           />
                         </div>
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> test
                         <div class="mb-5.5">
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
