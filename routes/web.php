@@ -8,7 +8,9 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
+use App\Models\Document;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +23,7 @@ Route::get('/', function () {
     } else if($user->type === 'docente'){
         return view('professor.doc-list');
     } else if($user->type === 'estudante'){
+        return redirect('estudante/inicio');
         return view('student.student');
     } else {
         Auth::logout();
@@ -130,9 +133,11 @@ Route::get('/professor/listar', function () {
     return view('professor.doc-list');
 })->name('professor.materialview');
 
-Route::get('/estudante/inicio', function () {
-    return view('student.student');
-})->name('student.home');
+Route::get('/estudante/inicio', [function () {
+    $user = User::where('id', Auth::user()->id)->first();
+    $documents = Document::where('course_id', $user->course_id)->orderByDesc('created_at')->get();
+    return view('student.student', compact('documents'));
+}])->name('student.home');
 
 Route::get('/estudante/material', [DocumentController::class, 'indexStudent'])->name('student.material');
 
