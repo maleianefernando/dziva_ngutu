@@ -54,15 +54,8 @@ class DocumentController extends Controller
             DB::beginTransaction();
             $files = $request->file('files');
             foreach ($files as $index => $file) {
-                // $fileInfo[] = [
-                //     'mime_type' => $file->getMimeType(),
-                //     'file_name' => $file->getClientOriginalName(),
-                //     'size' => $file->getSize(),
-                //     'extension' => $file->getClientOriginalExtension()
-                // ];
-
                 // $filename = uniqid() . ".{$fileInfo[$index]['extension']}";
-                $filename = uniqid().$file->getClientOriginalExtension();
+                $filename = 'dziva_ngutu_'. time() .'.'.$file->getClientOriginalExtension();
                 $document = Document::create([
                     'user_id' => $request->user_id,
                     'course_id' => $request->course_id,
@@ -72,23 +65,15 @@ class DocumentController extends Controller
                     'size' => $file->getSize(),
                     'extension' => $file->getClientOriginalExtension(),
                 ]);
-                $file->move('storage/', $filename);
+                $file->storeAs('', $filename, 'private');
 
-                if (Storage::disk('public')->exists($filename)) {
-                    // Move o arquivo de public para private
-                    $fileContent = Storage::disk('public')->get($filename);
-                    Storage::disk('local')->put($filename, $fileContent);
-                    Storage::disk('public')->delete($filename);
-                }
+                // if (Storage::disk('public')->exists($filename)) {
+                //     // Move o arquivo de public para private
+                //     $fileContent = Storage::disk('public')->get($filename);
+                //     Storage::disk('local')->put($filename, $fileContent);
+                //     Storage::disk('public')->delete($filename);
+                // }
             }
-            // $document = Document::create([
-            //     'user_id' => $request->user_id,
-            //     'file_name' => $request->file_name,
-            //     'size' => $request->size,
-            //     'extension' => $request->extension,
-            //     'description' => $request->description,
-            //     'mime_type' => $request->mime_type,
-            // ]);
             DB::commit();
 
             // return response()->json($document);
