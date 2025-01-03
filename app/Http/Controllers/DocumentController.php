@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Document;
+use App\Models\Subject;
+use Illuminate\Support\Str;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -65,9 +67,10 @@ class DocumentController extends Controller
 
             DB::beginTransaction();
             $files = $request->file('files');
+            $subject = Subject::where('id', $request->subject_id)->first();
             foreach ($files as $index => $file) {
                 // $filename = uniqid() . ".{$fileInfo[$index]['extension']}";
-                $filename = 'dziva_ngutu_'. time() .'.'.$file->getClientOriginalExtension();
+                $filename = Str::lower(Str::replace(' ', '_', $subject->name)). '_dziva_ngutu_'. time() .'.'.$file->getClientOriginalExtension();
                 $document = Document::create([
                     'user_id' => $request->user_id,
                     'course_id' => $request->course_id,
@@ -78,13 +81,6 @@ class DocumentController extends Controller
                     'extension' => $file->getClientOriginalExtension(),
                 ]);
                 $file->storeAs('', $filename, 'private');
-
-                // if (Storage::disk('public')->exists($filename)) {
-                //     // Move o arquivo de public para private
-                //     $fileContent = Storage::disk('public')->get($filename);
-                //     Storage::disk('local')->put($filename, $fileContent);
-                //     Storage::disk('public')->delete($filename);
-                // }
             }
             DB::commit();
 

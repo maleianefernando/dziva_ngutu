@@ -475,7 +475,7 @@
                             </td>
                             <td class="px-2 py-5">
                                 <div class="flex items-center space-x-3.5">
-                                <button class="hover:text-primary show-file" data-id="${e.id}" data-filename="${d.file_name}" onclick="showFile(this)">
+                                <button class="hover:text-primary show-file" data-id="${e.id}" data-filename="${e.file_name}" onclick="showFile(this)">
                                     <svg
                                     class="fill-current"
                                     width="18"
