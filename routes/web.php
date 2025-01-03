@@ -68,6 +68,56 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/materials', [DocumentController::class, 'index'])->name('admin.material');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/search_course/{faculty_id}', [CourseController::class, 'search_by_faculty']);
+    Route::get('/search_subject/{course_id}', [SubjectController::class, 'search_by_course']);
+
+    Route::get('/search_files/{subject_id}', [DocumentController::class, 'search_by_subject']);
+    Route::get('file/view/{filename}', [DocumentController::class, 'print'])->name('file.view');
+    Route::get('file/download/{filename}', [DocumentController::class, 'download'])->name('file.download');
+
+    Route::prefix('/utilizadores')->group(function () {
+        Route::get('/', [RegisteredUserController::class, 'index'])->name('utiliadores.listar');
+        Route::post('/criar', [RegisteredUserController::class, 'store'])->name('utilizadores.criar');
+        Route::get('/{id}', [RegisteredUserController::class, 'show']);
+        Route::put('/editar/{id}', [RegisteredUserController::class, 'update']);
+    });
+
+    Route::prefix('/faculdades')->group(function () {
+        Route::get('/', [FacultyController::class, 'index'])->name('faculdade.listar');
+        Route::post('/criar', [FacultyController::class, 'store'])->name('faculdade.criar');
+        Route::get('/{id}', [FacultyController::class, 'show']);
+        Route::put('/editar/{id}', [FacultyController::class, 'update']);
+    });
+
+    Route::prefix('/cursos')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('curso.listar');
+        Route::post('/criar', [CourseController::class, 'store'])->name('curso.criar');
+        Route::get('/{id}', [CourseController::class, 'show']);
+        Route::put('/editar/{id}', [CourseController::class, 'update']);
+    });
+
+    Route::prefix('/disciplinas')->group(function () {
+        Route::get('/', [SubjectController::class, 'index']);
+        Route::post('/criar', [SubjectController::class, 'store'])->name('disciplinas.registar');
+        Route::get('/{id}', [SubjectController::class, 'show']);
+        Route::put('/editar/{id}', [SubjectController::class, 'update']);
+    });
+
+    Route::prefix('/documentos')->group(function () {
+        Route::get('/', [DocumentController::class, 'index']);
+        Route::post('/criar', [DocumentController::class, 'store'])->name('documentos.criar');
+        Route::get('/{id}', [DocumentController::class, 'show']);
+        Route::put('/editar/{id}', [DocumentController::class, 'update']);
+    });
+
+    Route::prefix('/comentarios')->group(function () {
+        Route::get('/', [CommentController::class, 'index']);
+        Route::post('/criar', [CommentController::class, 'store']);
+        Route::get('/{id}', [CommentController::class, 'show']);
+        Route::put('/editar/{id}', [CommentController::class, 'update']);
+    });
+});
 
 Route::get('/professor/material', function () {
     return view('professor.doc-upload');
@@ -97,50 +147,7 @@ Route::get('/professor/perfil', function () {
 //     return view('professor.doc-list');
 // })->name('professor.materialview');
 
-Route::get('/search_course/{faculty_id}', [CourseController::class, 'search_by_faculty']);
-Route::get('/search_subject/{course_id}', [SubjectController::class, 'search_by_course']);
 
-Route::prefix('/utilizadores')->group(function () {
-    Route::get('/', [RegisteredUserController::class, 'index'])->name('utiliadores.listar');
-    Route::post('/criar', [RegisteredUserController::class, 'store'])->name('utilizadores.criar');
-    Route::get('/{id}', [RegisteredUserController::class, 'show']);
-    Route::put('/editar/{id}', [RegisteredUserController::class, 'update']);
-});
-
-Route::prefix('/faculdades')->group(function () {
-    Route::get('/', [FacultyController::class, 'index'])->name('faculdade.listar');
-    Route::post('/criar', [FacultyController::class, 'store'])->name('faculdade.criar');
-    Route::get('/{id}', [FacultyController::class, 'show']);
-    Route::put('/editar/{id}', [FacultyController::class, 'update']);
-});
-
-Route::prefix('/cursos')->group(function () {
-    Route::get('/', [CourseController::class, 'index'])->name('curso.listar');
-    Route::post('/criar', [CourseController::class, 'store'])->name('curso.criar');
-    Route::get('/{id}', [CourseController::class, 'show']);
-    Route::put('/editar/{id}', [CourseController::class, 'update']);
-});
-
-Route::prefix('/disciplinas')->group(function () {
-    Route::get('/', [SubjectController::class, 'index']);
-    Route::post('/criar', [SubjectController::class, 'store'])->name('disciplinas.registar');
-    Route::get('/{id}', [SubjectController::class, 'show']);
-    Route::put('/editar/{id}', [SubjectController::class, 'update']);
-});
-
-Route::prefix('/documentos')->group(function () {
-    Route::get('/', [DocumentController::class, 'index']);
-    Route::post('/criar', [DocumentController::class, 'store'])->name('documentos.criar');
-    Route::get('/{id}', [DocumentController::class, 'show']);
-    Route::put('/editar/{id}', [DocumentController::class, 'update']);
-});
-
-Route::prefix('/comentarios')->group(function () {
-    Route::get('/', [CommentController::class, 'index']);
-    Route::post('/criar', [CommentController::class, 'store']);
-    Route::get('/{id}', [CommentController::class, 'show']);
-    Route::put('/editar/{id}', [CommentController::class, 'update']);
-});
 
 
 Route::get('/dashboard', function () {

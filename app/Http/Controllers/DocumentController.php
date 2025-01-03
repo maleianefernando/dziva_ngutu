@@ -25,6 +25,11 @@ class DocumentController extends Controller
         // return response()->json($documents);
     }
 
+    public function search_by_subject ($subject_id){
+        $documents = Document::where('subject_id', $subject_id)->get();
+        return response()->json($documents);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -97,6 +102,22 @@ class DocumentController extends Controller
         }catch(Exception $e){
             return response()->json(['error' => $e->getMessage()]);
         }
+    }
+
+    public function print($filename) {
+        $path = storage_path("app/private/{$filename}");
+        if(!file_exists($path)){
+            abort(404, 'Ficheiro nao encontrado');
+        }
+        return response()->file($path);
+    }
+
+    public function download($filename) {
+        $path = storage_path("app/private/{$filename}");
+        if(!file_exists($path)){
+            abort(404, 'Ficheiro nao encontrado');
+        }
+        return response()->download($path);
     }
 
     /**
