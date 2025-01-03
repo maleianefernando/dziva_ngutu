@@ -25,6 +25,11 @@ class DocumentController extends Controller
         // return response()->json($documents);
     }
 
+    public function search_by_subject ($subject_id){
+        $documents = Document::where('subject_id', $subject_id)->get();
+        return response()->json($documents);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -99,6 +99,7 @@ Route::get('/professor/perfil', function () {
 
 Route::get('/search_course/{faculty_id}', [CourseController::class, 'search_by_faculty']);
 Route::get('/search_subject/{course_id}', [SubjectController::class, 'search_by_course']);
+Route::get('/search_files/{subject_id}', [DocumentController::class, 'search_by_subject']);
 
 Route::prefix('/utilizadores')->group(function () {
     Route::get('/', [RegisteredUserController::class, 'index'])->name('utiliadores.listar');
