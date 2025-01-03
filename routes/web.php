@@ -10,12 +10,14 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $user = Auth::user();
     if($user->role === 'admin'){
-        return view('admin.doc-upload');
+        return Redirect::to('/admin/materials');
+        // return view('admin.doc-upload');
     } else if($user->type === 'docente'){
         return view('professor.doc-list');
     } else if($user->type === 'estudante'){
@@ -71,6 +73,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/search_course/{faculty_id}', [CourseController::class, 'search_by_faculty']);
     Route::get('/search_subject/{course_id}', [SubjectController::class, 'search_by_course']);
+    Route::get('/search_subject_by_year/{year}', [SubjectController::class, 'search_by_year']);
 
     Route::get('/search_files/{subject_id}', [DocumentController::class, 'search_by_subject']);
     Route::get('file/view/{filename}', [DocumentController::class, 'print'])->name('file.view');
@@ -131,13 +134,9 @@ Route::get('/estudante/inicio', function () {
     return view('student.student');
 })->name('student.home');
 
-Route::get('/estudante/material', function () {
-    return view('student.doc-list');
-})->name('student.material');
+Route::get('/estudante/material', [DocumentController::class, 'indexStudent'])->name('student.material');
 
-Route::get('/estudante/perfil', function () {
-    return view('student.settings');
-})->name('estudante.perfil');
+Route::get('/estudante/perfil', [ProfileController::class, 'editStudent'])->name('estudante.perfil');
 
 Route::get('/professor/perfil', function () {
     return view('professor.settings');

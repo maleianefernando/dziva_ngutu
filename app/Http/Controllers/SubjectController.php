@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Faculty;
 use App\Models\Subject;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -24,6 +26,14 @@ class SubjectController extends Controller
 
     public function search_by_course($course_id){
         $subjects = Subject::where('course_id', $course_id)->get();
+        return response()->json($subjects);
+    }
+
+    public function search_by_year($year) {
+        $user = User::where('id', Auth::user()->id)->first();
+        $subjects = Subject::where('year', $year)
+                            ->where('course_id', $user->course_id)
+                            ->get();
         return response()->json($subjects);
     }
 
