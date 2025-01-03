@@ -24,7 +24,11 @@
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
+<<<<<<< HEAD
       
+=======
+      @include('student.partials.sidebar')
+>>>>>>> test
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->
@@ -279,7 +283,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                     </div>
                     <div class="p-7">
                       <form action="#">
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> test
                         <div class="mb-5.5">
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -295,7 +303,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                             value=""
                           />
                         </div>
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> test
                         <div class="mb-5.5">
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -311,7 +323,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                             value=""
                           />
                         </div>
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> test
                         <div class="mb-5.5">
                           <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"

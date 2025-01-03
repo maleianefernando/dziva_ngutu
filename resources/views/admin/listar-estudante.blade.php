@@ -5,10 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
     <title>Tables | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
 
+=======
+    <title>Estudantes | Dziva Ngutu</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  </head>
+>>>>>>> test
   <body
     x-data="{ page: 'listarEstudante', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
@@ -45,13 +51,21 @@
               class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
               <h2 class="text-title-md2 font-bold text-black dark:text-white">
+<<<<<<< HEAD
                 Tables
+=======
+                Estudantes
+>>>>>>> test
               </h2>
 
               <nav>
                 <ol class="flex items-center gap-2">
                   <li>
+<<<<<<< HEAD
                     <a class="font-medium" href="index.html">Dashboard /</a>
+=======
+                    <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
+>>>>>>> test
                   </li>
                   <li class="font-medium text-primary">Tables</li>
                 </ol>
@@ -75,6 +89,14 @@
                                 Nome
                             </th>
                             <th
+<<<<<<< HEAD
+=======
+                                class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
+                            >
+                                Faculdade
+                            </th>
+                            <th
+>>>>>>> test
                                 class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
                             >
                                 Curso
@@ -90,10 +112,16 @@
                             </tr>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
+=======
+                            @foreach ($users as $u)
+
+>>>>>>> test
                             <tr>
                                 <td
                                     class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
                                 >
+<<<<<<< HEAD
                                     <h5 class="font-medium text-black dark:text-white">Paito</h5>
                                     <!-- <p class="text-sm">$0.00</p> -->
                                 </td>
@@ -102,6 +130,23 @@
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                     <p class="text-black dark:text-white">Jan 13,2023</p>
+=======
+                                    <h5 class="font-medium text-black dark:text-white">
+                                        {{ $u->name.' '.$u->lastname }}
+                                    </h5>
+                                    <!-- <p class="text-sm">$0.00</p> -->
+                                </td>
+                                <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                                    {{ \App\Models\Faculty::where('id', $u->faculty_id)->first()->name }}
+                                </td>
+                                <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                                    {{ \App\Models\Course::where('id', $u->course_id)->first()->name }}
+                                </td>
+                                <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                                    <p class="text-black dark:text-white">
+                                        {{ $u->updated_at }}
+                                    </p>
+>>>>>>> test
                                 </td>
                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                     <div class="flex items-center space-x-3.5">
@@ -138,6 +183,10 @@
                                     </div>
                                 </td>
                             </tr>
+<<<<<<< HEAD
+=======
+                            @endforeach
+>>>>>>> test
                         </tbody>
                         </table>
                     </div>
@@ -154,4 +203,8 @@
     </div>
     <!-- ===== Page Wrapper End ===== -->
   </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> test

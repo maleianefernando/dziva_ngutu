@@ -1,59 +1,123 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\UserController;
+use App\Models\Subject;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('admin.doc-upload');
+    $user = Auth::user();
+    if($user->role === 'admin'){
+        return view('admin.doc-upload');
+    } else if($user->type === 'docente'){
+        return view('professor.doc-list');
+    } else if($user->type === 'estudante'){
+        return view('student.student');
+    } else {
+        Auth::logout();
+        return view('auth.login');
+    }
+})->name('index')->middleware('auth');
+
+Route::get('/redirect_user_by_role', function (){
+    $user = Auth::user();
+    if($user->role === 'admin'){
+        return view('admin.doc-upload');
+    } else if($user->type === 'docente'){
+        return view('professor.doc-list');
+    } else if($user->type === 'estudante'){
+        return view('student.student');
+    } else {
+        Auth::logout();
+        return view('auth.login');
+    }
+})->name('redirect_by_role');
+
+Route::prefix('/admin')->middleware('auth')->group(function () {
+    Route::prefix('/registar')->group(function () {
+        Route::get('/docente', [UserController::class, 'createTeacher'])->name('registar.docente');
+
+        Route::get('/estudante', [UserController::class, 'createStudent'])->name('registar.estudante');
+
+        Route::get('/facudade', [FacultyController::class, 'create'])->name('registar.faculdade');
+
+        Route::get('/curso', [CourseController::class, 'create'])->name('registar.curso');
+
+        Route::get('/cadeira', [SubjectController::class, 'create'])->name('registar.cadeira');
+    });
+
+    Route::get('/perfil', [ProfileController::class, 'editAdmin'])->name('admin.perfil');
+
+    Route::get('/docentes', [UserController::class, 'indexOfTeacher'])->name('listar.docente');
+
+    Route::get('/estudantes', [UserController::class, 'indexOfStudent'])->name('listar.estudante');
+
+    Route::get('/faculdades', [FacultyController::class, 'index'])->name('listar.faculdade');
+
+    Route::get('/cursos', [CourseController::class, 'index'])->name('listar.cursos');
+
+    Route::get('/cadeiras', [SubjectController::class, 'index'])->name('listar.cadeira');
+
+    Route::get('/materials', [DocumentController::class, 'index'])->name('admin.material');
 });
 
-Route::get('/registar/docente', function () {
-    return view('admin.registar-docente');
-})->name('registar.docente');
+Route::middleware('auth')->group(function () {
+    Route::get('/search_course/{faculty_id}', [CourseController::class, 'search_by_faculty']);
+    Route::get('/search_subject/{course_id}', [SubjectController::class, 'search_by_course']);
 
-Route::get('/registar/estudante', function () {
-    return view('admin.registar-estudante');
-})->name('registar.estudante');
+    Route::get('/search_files/{subject_id}', [DocumentController::class, 'search_by_subject']);
+    Route::get('file/view/{filename}', [DocumentController::class, 'print'])->name('file.view');
+    Route::get('file/download/{filename}', [DocumentController::class, 'download'])->name('file.download');
 
-Route::get('/registar/facudade', function () {
-    return view('admin.registar-faculdade');
-})->name('registar.faculdade');
+    Route::prefix('/utilizadores')->group(function () {
+        Route::get('/', [RegisteredUserController::class, 'index'])->name('utiliadores.listar');
+        Route::post('/criar', [RegisteredUserController::class, 'store'])->name('utilizadores.criar');
+        Route::get('/{id}', [RegisteredUserController::class, 'show']);
+        Route::put('/editar/{id}', [RegisteredUserController::class, 'update']);
+    });
 
-Route::get('/registar/curso', function () {
-    return view('admin.registar-curso');
-})->name('registar.curso');
+    Route::prefix('/faculdades')->group(function () {
+        Route::get('/', [FacultyController::class, 'index'])->name('faculdade.listar');
+        Route::post('/criar', [FacultyController::class, 'store'])->name('faculdade.criar');
+        Route::get('/{id}', [FacultyController::class, 'show']);
+        Route::put('/editar/{id}', [FacultyController::class, 'update']);
+    });
 
-Route::get('/registar/cadeira', function () {
-    return view('admin.registar-cadeira');
-})->name('registar.cadeira');
+    Route::prefix('/cursos')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('curso.listar');
+        Route::post('/criar', [CourseController::class, 'store'])->name('curso.criar');
+        Route::get('/{id}', [CourseController::class, 'show']);
+        Route::put('/editar/{id}', [CourseController::class, 'update']);
+    });
 
-Route::get('/docente', function () {
-    return view('admin.listar-docente');
-})->name('listar.docente');
+    Route::prefix('/disciplinas')->group(function () {
+        Route::get('/', [SubjectController::class, 'index']);
+        Route::post('/criar', [SubjectController::class, 'store'])->name('disciplinas.registar');
+        Route::get('/{id}', [SubjectController::class, 'show']);
+        Route::put('/editar/{id}', [SubjectController::class, 'update']);
+    });
 
-Route::get('/estudante', function () {
-    return view('admin.listar-estudante');
-})->name('listar.estudante');
+    Route::prefix('/documentos')->group(function () {
+        Route::get('/', [DocumentController::class, 'index']);
+        Route::post('/criar', [DocumentController::class, 'store'])->name('documentos.criar');
+        Route::get('/{id}', [DocumentController::class, 'show']);
+        Route::put('/editar/{id}', [DocumentController::class, 'update']);
+    });
 
-Route::get('/faculdade', function () {
-    return view('admin.listar-faculdade');
-})->name('listar.faculdade');
-
-Route::get('/curso', function () {
-    return view('admin.listar-curso');
-})->name('listar.curso');
-
-Route::get('/cadeira', function () {
-    return view('admin.listar-cadeira');
-})->name('listar.cadeira');
-
-Route::get('/material', function () {
-    return view('admin.doc-upload');
-})->name('material');
-
-
-
-
+    Route::prefix('/comentarios')->group(function () {
+        Route::get('/', [CommentController::class, 'index']);
+        Route::post('/criar', [CommentController::class, 'store']);
+        Route::get('/{id}', [CommentController::class, 'show']);
+        Route::put('/editar/{id}', [CommentController::class, 'update']);
+    });
+});
 
 Route::get('/professor/material', function () {
     return view('professor.doc-upload');
@@ -63,19 +127,13 @@ Route::get('/professor/listar', function () {
     return view('professor.doc-list');
 })->name('professor.materialview');
 
-
-
+Route::get('/estudante/inicio', function () {
+    return view('student.student');
+})->name('student.home');
 
 Route::get('/estudante/material', function () {
     return view('student.doc-list');
 })->name('student.material');
-
-
-
-
-
-
-
 
 Route::get('/estudante/perfil', function () {
     return view('student.settings');
@@ -84,10 +142,6 @@ Route::get('/estudante/perfil', function () {
 Route::get('/professor/perfil', function () {
     return view('professor.settings');
 })->name('professor.perfil');
-
-Route::get('/admin/perfil', function () {
-    return view('admin.settings');
-})->name('admin.perfil');
 
 // Route::get('/professor/listar', function () {
 //     return view('professor.doc-list');
