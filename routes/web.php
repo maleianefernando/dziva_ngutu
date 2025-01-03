@@ -98,7 +98,7 @@ Route::get('/professor/perfil', function () {
 // })->name('professor.materialview');
 
 Route::get('/search_course/{faculty_id}', [CourseController::class, 'search_by_faculty']);
-
+Route::get('/search_subject/{course_id}', [SubjectController::class, 'search_by_course']);
 
 Route::prefix('/utilizadores')->group(function () {
     Route::get('/', [RegisteredUserController::class, 'index'])->name('utiliadores.listar');
@@ -130,7 +130,7 @@ Route::prefix('/disciplinas')->group(function () {
 
 Route::prefix('/documentos')->group(function () {
     Route::get('/', [DocumentController::class, 'index']);
-    Route::post('/criar', [DocumentController::class, 'store']);
+    Route::post('/criar', [DocumentController::class, 'store'])->name('documentos.criar');
     Route::get('/{id}', [DocumentController::class, 'show']);
     Route::put('/editar/{id}', [DocumentController::class, 'update']);
 });

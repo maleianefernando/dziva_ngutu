@@ -22,6 +22,11 @@ class SubjectController extends Controller
         // return response()->json($subjects);
     }
 
+    public function search_by_course($course_id){
+        $subjects = Subject::where('course_id', $course_id)->get();
+        return response()->json($subjects);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

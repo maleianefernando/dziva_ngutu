@@ -18,6 +18,8 @@ class Document extends Model
      */
     protected $fillable = [
         'user_id',
+        'course_id',
+        'subject_id',
         'file_name',
         'size',
         'extension',

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Document;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -15,7 +19,9 @@ class DocumentController extends Controller
     public function index()
     {
         $documents = Document::all();
-        return view('admin.doc-upload', compact('documents'));
+        $courses = Course::all();
+        $user_id = Auth::user()->id;
+        return view('admin.doc-upload', compact('user_id', 'documents', 'courses'));
         // return response()->json($documents);
     }
 
@@ -32,31 +38,66 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
+        // $fileInfo = [];
         try{
             $request->validate([
                 'user_id' => ['required', 'numeric'],
-                'size' => ['required', 'string'],
-                'extension' => ['required', 'string'],
-                'mime_type' => ['required', 'string'],
+                'files' => ['required'],
+                'course_id' => ['required', 'numeric'],
+                'subject_id' => ['required', 'numeric'],
+            ], [
+                'files.required' => 'Por favor selecione um ficheiro!',
+                'course_id.required' => 'Por favor, informe o curso!',
+                'subject_id' => 'Por favor, informe a cadeira!',
             ]);
-
-            // $course = Course::where('id', $request->course_id)->get()->first();
 
             DB::beginTransaction();
-            $document = Document::create([
-                'user_id' => $request->user_id,
-                'file_name' => $request->file_name,
-                'size' => $request->size,
-                'extension' => $request->extension,
-                'description' => $request->description,
-                'mime_type' => $request->mime_type,
-            ]);
+            $files = $request->file('files');
+            foreach ($files as $index => $file) {
+                // $fileInfo[] = [
+                //     'mime_type' => $file->getMimeType(),
+                //     'file_name' => $file->getClientOriginalName(),
+                //     'size' => $file->getSize(),
+                //     'extension' => $file->getClientOriginalExtension()
+                // ];
+
+                // $filename = uniqid() . ".{$fileInfo[$index]['extension']}";
+                $filename = uniqid().$file->getClientOriginalExtension();
+                $document = Document::create([
+                    'user_id' => $request->user_id,
+                    'course_id' => $request->course_id,
+                    'subject_id' => $request->subject_id,
+                    'mime_type' => $file->getMimeType(),
+                    'file_name' => $filename,
+                    'size' => $file->getSize(),
+                    'extension' => $file->getClientOriginalExtension(),
+                ]);
+                $file->move('storage/', $filename);
+
+                if (Storage::disk('public')->exists($filename)) {
+                    // Move o arquivo de public para private
+                    $fileContent = Storage::disk('public')->get($filename);
+                    Storage::disk('local')->put($filename, $fileContent);
+                    Storage::disk('public')->delete($filename);
+                }
+            }
+            // $document = Document::create([
+            //     'user_id' => $request->user_id,
+            //     'file_name' => $request->file_name,
+            //     'size' => $request->size,
+            //     'extension' => $request->extension,
+            //     'description' => $request->description,
+            //     'mime_type' => $request->mime_type,
+            // ]);
             DB::commit();
 
-            return response()->json($document);
+            // return response()->json($document);
+            $message = "Ficheiro(s) enviado(s) enviados com sucesso!";
+            return Redirect::back()->with('success', 'success')->with('message', $message);
         }catch(Exception $e){
             DB::rollBack();
-            return response()->json(['error' => $e->getMessage()]);
+            // return response()->json(['error' => $e->getMessage()]);
+            return Redirect::back()->with('error', 'error')->with('message', $e->getMessage())->withInput();
         }
     }
 
