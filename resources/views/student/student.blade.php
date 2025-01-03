@@ -31,7 +31,7 @@
       >
         <!-- ===== Header Start ===== -->
         <include src="./partials/header.html" />
-        @include('student.partials.header')
+        @include('admin.partials.header')
         <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
@@ -154,7 +154,7 @@
                   </div>
               </div>
 
-              
+
                 </div>
                 </div>
               <!-- ====== Table Three End -->

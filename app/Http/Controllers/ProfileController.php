@@ -17,9 +17,14 @@ class ProfileController extends Controller
      */
     public function editAdmin (Request $request)
     {
-        $user = User::find(Auth::user())->first();
+        $user = User::where('id', Auth::user()->id)->first();
 
         return view('admin.settings', compact('user'));
+    }
+
+    public function editStudent(Request $request) {
+        $user = User::where('id', Auth::user()->id)->first();
+        return view('student.settings', compact('user'));
     }
 
     /**

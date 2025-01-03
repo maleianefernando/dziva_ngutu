@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Document;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,12 @@ class DocumentController extends Controller
         $user_id = Auth::user()->id;
         return view('admin.doc-upload', compact('user_id', 'documents', 'courses'));
         // return response()->json($documents);
+    }
+
+    public function indexStudent(){
+        $user = User::where('id', Auth::user()->id)->first();
+        $documents = Document::where('course_id', $user->course_id)->orderByDesc('created_at')->get();
+        return view('student.doc-list', compact('documents'));
     }
 
     public function search_by_subject ($subject_id){
