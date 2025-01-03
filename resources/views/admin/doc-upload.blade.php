@@ -203,7 +203,7 @@
                                 </td>
                                 <td class="px-2 py-5">
                                     <div class="flex items-center space-x-3.5">
-                                    <button class="hover:text-primary">
+                                    <button class="hover:text-primary show-file" data-id="{{ $d->id }}" data-filename="{{ $d->file_name }}" onclick="showFile(this)">
                                         <svg
                                         class="fill-current"
                                         width="18"
@@ -222,7 +222,7 @@
                                         />
                                         </svg>
                                     </button>
-                                    <button class="hover:text-primary">
+                                    <button class="hover:text-primary delete-file">
                                         <svg
                                         class="fill-current"
                                         width="18"
@@ -249,7 +249,7 @@
                                         />
                                         </svg>
                                     </button>
-                                    <button class="hover:text-primary">
+                                    <button class="hover:text-primary download-file" data-id="{{ $d->id }}" data-filename="{{ $d->file_name }}" onclick="downloadFile(this)">
                                         <svg
                                         class="fill-current"
                                         width="18"
@@ -444,7 +444,6 @@
     </div>
     <!-- ===== Page Wrapper End ===== -->
     <script>
-        // fillCourseSelect();
         const firstCourseSelect = document.getElementById('first_course');
         const firstSubjectSelect = document.getElementById('first_subject');
         const courseSelect = document.getElementById('course');
@@ -476,7 +475,7 @@
                             </td>
                             <td class="px-2 py-5">
                                 <div class="flex items-center space-x-3.5">
-                                <button class="hover:text-primary">
+                                <button class="hover:text-primary show-file" data-id="${e.id}" data-filename="${d.file_name}" onclick="showFile(this)">
                                     <svg
                                     class="fill-current"
                                     width="18"
@@ -495,7 +494,7 @@
                                     />
                                     </svg>
                                 </button>
-                                <button class="hover:text-primary">
+                                <button class="hover:text-primary delete-file">
                                     <svg
                                     class="fill-current"
                                     width="18"
@@ -522,7 +521,7 @@
                                     />
                                     </svg>
                                 </button>
-                                <button class="hover:text-primary">
+                                <button class="hover:text-primary download-file" data-id="${e.id}" data-filename="${e.file_name}" onclick="downloadFile(this)">
                                     <svg
                                     class="fill-current"
                                     width="18"
@@ -570,6 +569,20 @@
                     `
                 });
             })
+        }
+
+        function showFile(element) {
+            const filename = element.dataset.filename;
+            window.open(`/file/view/${filename}`, `_blank`);
+            // console.log(element.dataset.id)
+            // console.log(element.dataset.filename)
+        }
+
+        function downloadFile(element) {
+            const filename = element.dataset.filename;
+            window.location.href = `/file/download/${filename}`;
+            // console.log(element.dataset.id)
+            // console.log(element.dataset.filename)
         }
     </script>
   </body>

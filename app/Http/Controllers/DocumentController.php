@@ -104,6 +104,22 @@ class DocumentController extends Controller
         }
     }
 
+    public function print($filename) {
+        $path = storage_path("app/private/{$filename}");
+        if(!file_exists($path)){
+            abort(404, 'Ficheiro nao encontrado');
+        }
+        return response()->file($path);
+    }
+
+    public function download($filename) {
+        $path = storage_path("app/private/{$filename}");
+        if(!file_exists($path)){
+            abort(404, 'Ficheiro nao encontrado');
+        }
+        return response()->download($path);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
