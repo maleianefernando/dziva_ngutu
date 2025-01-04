@@ -73,13 +73,15 @@
                             <th
                                 class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
                             >
-                                Ano
+                                Cadeira
                             </th>
+                            
                             <th
-                                class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
+                                class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
                             >
-                                Docente
+                              Ano
                             </th>
+
                             <th
                                 class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
                             >
@@ -108,11 +110,34 @@
                                 <!-- <p class="text-sm">$0.00</p> -->
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                {{-- {{ $d->file_name }} --}}
+                                @foreach ($subject as $s)
+                                    @if ($s->id == $d->subject_id)
+                                        <p class="text-black dark:text-white">
+                                            {{ $s->name }} 
+                                        </p>
+                                    @endif
+                                @endforeach
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                 <p class="text-black dark:text-white">
-                                    {{-- {{  }} --}}
+                                  @foreach ($subject as $s)
+                                    @if ($s->id == $d->subject_id)
+                                      <p class="text-black dark:text-white">
+                                        {{ $s->year }} ano 
+                                      </p>
+                                    @endif
+                                  @endforeach
+                                </p>
+                            </td>
+                            <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                                <p class="text-black dark:text-white">
+                                  @foreach ($subject as $s)
+                                    @if ($s->id == $d->subject_id)
+                                      <p class="text-black dark:text-white">
+                                        {{ $s->semester }}º Semestre 
+                                      </p>
+                                    @endif
+                                  @endforeach
                                 </p>
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
@@ -122,7 +147,7 @@
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                               <div class="flex items-center space-x-3.5">
-                                <button class="hover:text-primary">
+                                <button class="hover:text-primary" type="button" data-id="{{ $d->id }}" data-filename="{{ $d->file_name }}" onclick="showFile(this)" >
                                   <svg
                                   class="fill-current"
                                   width="18"
@@ -142,7 +167,7 @@
                                   </svg>
                                 </button>
 
-                                <button class="hover:text-primary">
+                                <button class="hover:text-primary" type="button" data-id="{{ $d->id }}" data-filename="{{ $d->file_name }}" onclick="downloadFile(this)">
                                   <svg
                                   class="fill-current"
                                   width="18"
@@ -188,4 +213,19 @@
     </div>
     <!-- ===== Page Wrapper End ===== -->
   </body>
+  <script>
+    function showFile(element) {
+            const filename = element.dataset.filename;
+            window.open(`/file/view/${filename}`, `_blank`);
+            // console.log(element.dataset.id)
+            // console.log(element.dataset.filename)
+        }
+
+        function downloadFile(element) {
+            const filename = element.dataset.filename;
+            window.location.href = `/file/download/${filename}`;
+            // console.log(element.dataset.id)
+            // console.log(element.dataset.filename)
+        }
+  </script>
 </html>

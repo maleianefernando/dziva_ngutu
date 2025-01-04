@@ -135,7 +135,8 @@ Route::get('/professor/listar', function () {
 Route::get('/estudante/inicio', [function () {
     $user = User::where('id', Auth::user()->id)->first();
     $documents = Document::where('course_id', $user->course_id)->orderByDesc('created_at')->get();
-    return view('student.student', compact('documents'));
+    $subject = Subject::all();
+    return view('student.student', compact('documents', 'subject'));
 }])->name('student.home');
 
 Route::get('/estudante/material', [DocumentController::class, 'indexStudent'])->name('student.material');

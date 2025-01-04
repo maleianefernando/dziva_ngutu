@@ -25,7 +25,12 @@
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
       <include src="./partials/sidebar.html"></include>
-      @include('admin.partials.sidebar')
+      @if (Auth::check())
+        @if (Auth::user()->role === 'admin')
+          @include('admin.partials.sidebar')
+        @endif
+      @endif
+      {{-- @include('admin.partials.sidebar') --}}
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->
