@@ -98,11 +98,13 @@
                                 <option value="" class="text-body">
                                 -- Selecione o curso
                                 </option>
-                                @foreach ($courses as $c)
-                                    <option value="{{ $c->id }}" class="text-body">
-                                        {{ $c->name }}
-                                    </option>
-                                @endforeach
+                                @if ($courses)
+                                  @foreach ($courses as $c)
+                                  <option value="{{ $c->id }}" class="text-body">
+                                    {{ $c->name }}
+                                  </option>
+                                  @endforeach
+                                @endif
                             </select>
                             <span
                                 class="absolute right-4 top-1/2 z-30 -translate-y-1/2"

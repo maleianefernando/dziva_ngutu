@@ -152,7 +152,7 @@
         >
           <span class="hidden text-right lg:block">
             <span class="block text-sm font-medium text-black dark:text-white"
-              >Thomas Anree</span
+              >docente docente</span
             >
             <span class="block text-xs font-medium">Docente</span>
           </span>

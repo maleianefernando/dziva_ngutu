@@ -24,11 +24,7 @@
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
-<<<<<<< HEAD
-      
-=======
       @include('student.partials.sidebar')
->>>>>>> test
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->

@@ -6,11 +6,7 @@
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-3 py-3 lg:py-3">
-<<<<<<< HEAD
-    <a 
-=======
     <a
->>>>>>> test
       style="background: white"
       href="{{route('professor.material')}}" class="w-full flex justify-center items-center overflow-hidden rounded-sm bg-white"
     >
@@ -51,11 +47,6 @@
         <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">MENU</h3>
 
         <ul class="mb-6 flex flex-col gap-1.5">
-<<<<<<< HEAD
-          
-=======
-
->>>>>>> test
           <!-- Menu Item Tables -->
           <li>
             <a
@@ -93,17 +84,10 @@
               Listar Material
             </a>
           </li>
-<<<<<<< HEAD
-          
-          <!-- Menu Item Tables -->
-
-          
-=======
 
           <!-- Menu Item Tables -->
 
 
->>>>>>> test
 
           <!-- Menu Item UploadFile -->
           <li>
@@ -153,21 +137,12 @@
         <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">OTHERS</h3>
 
         <ul class="mb-6 flex flex-col gap-1.5">
-<<<<<<< HEAD
-          
-=======
-
->>>>>>> test
 
           <!-- Menu Item Settings -->
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-<<<<<<< HEAD
-              href="settings.html"
-=======
               href="/professor/perfil"
->>>>>>> test
               @click="selected = (selected === 'Settings' ? '':'Settings')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Settings') && (page === 'settings') }"
               :class="page === 'settings' && 'bg-graydark'"
@@ -203,20 +178,12 @@
 
           <!-- Menu Item Auth Pages -->
           <li>
-<<<<<<< HEAD
-            <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="{{route('logout')}}"
-              @click.prevent="selected = (selected === 'AuthPages' ? '':'AuthPages')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'AuthPages') || (page === 'register' || page === 'login') }"
-=======
             <form action="{{ route('logout') }}" method="POST" id="logout" style="display: none;">
                 @csrf
             </form>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               onclick="document.getElementById('logout').submit()"
->>>>>>> test
             >
               <svg
                 class="fill-current"

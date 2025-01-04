@@ -24,8 +24,7 @@
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
 
-        @include('student.partials.sidebar')
-      <!-- ===== Content Area Start ===== -->
+        
       <div
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
       >
@@ -77,6 +76,11 @@
                                 Faculdade
                             </th>
                             <th
+                                class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
+                            >
+                                Docente
+                            </th>
+                            <th
                                 class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
                             >
                                 Ultima Atulização
@@ -99,7 +103,10 @@
                                 FET
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                <p class="text-black dark:text-white">Jan 13,2023</p>
+                                admin admin
+                            </td>
+                            <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                                <p class="text-black dark:text-white">2025-01-03 22:56:17</p>
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                               <div class="flex items-center space-x-3.5">

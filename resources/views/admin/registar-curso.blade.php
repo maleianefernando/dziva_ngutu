@@ -6,11 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-<<<<<<< HEAD
-      Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
-=======
       Registar Curso | Dziva Ngutu
->>>>>>> test
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
@@ -42,35 +38,24 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-<<<<<<< HEAD
-=======
             @if(Session('success'))
                 @include('components.success-alert')
             @elseif (session('error'))
                 @include('components.error-alert')
             @endif
->>>>>>> test
         <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
             <!-- Breadcrumb Start -->
             <div
             class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
-<<<<<<< HEAD
-                Formulário de Registo
-=======
                 Registar Curso
->>>>>>> test
             </h2>
 
             <nav>
                 <ol class="flex items-center gap-2">
                 <li>
-<<<<<<< HEAD
-                    <a class="font-medium" href="index.html">Dashboard /</a>
-=======
                     <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
->>>>>>> test
                 </li>
                 <li class="font-medium text-primary">Registar Curso</li>
                 </ol>
@@ -92,12 +77,8 @@
                             Registe o Curso
                         </h3>
                     </div>
-<<<<<<< HEAD
-                    <form action="#">
-=======
                     <form action="{{ route('curso.criar') }}" method="POST">
                         @csrf
->>>>>>> test
                         <div class="p-6.5">
                             <div class="mb-4.5">
                                 <label
@@ -107,21 +88,12 @@
                                 </label>
                                 <input
                                     type="text"
-<<<<<<< HEAD
-                                    placeholder="Nome"
-                                    name=""
-                                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                />
-                            </div>
-                            
-=======
                                     placeholder="Ex: Informática aplicada"
                                     name="name"
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
 
->>>>>>> test
                             <div class="mb-4.5">
                                 <label
                                     class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -130,30 +102,17 @@
                                 </label>
                                 <input
                                     type="number"
-<<<<<<< HEAD
-                                    placeholder="Maputo/exemplo"
-                                    name=""
-                                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                />
-                            </div>
-                            
-=======
                                     placeholder="Quantos anos dura o curso"
                                     name="duration"
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
 
->>>>>>> test
                             <div class="mb-4.5">
                                 <label
                                 class="mb-3 block text-sm font-medium text-black dark:text-white"
                                 >
-<<<<<<< HEAD
-                                Facldade
-=======
                                 Faculdade
->>>>>>> test
                                 </label>
                                 <div
                                 x-data="{ isOptionSelected: false }"
@@ -163,17 +122,6 @@
                                     class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                                     :class="isOptionSelected && 'text-black dark:text-white'"
                                     @change="isOptionSelected = true"
-<<<<<<< HEAD
-                                >
-                                    <option value="" class="text-body">
-                                    -- Selecione a Faculdade
-                                    </option>
-                                    <option value="" class="text-body">USA</option>
-                                    <option value="" class="text-body">UK</option>
-                                    <option value="" class="text-body">Canada</option>
-                                </select>
-                                
-=======
                                     name="faculty_id"
                                 >
                                     <option value="faculdade" class="text-body">
@@ -184,7 +132,6 @@
                                     @endforeach
                                 </select>
 
->>>>>>> test
                                 </div>
                             </div>
                             <button

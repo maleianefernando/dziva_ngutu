@@ -25,11 +25,7 @@
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
       <include src="./partials/sidebar.html"></include>
-<<<<<<< HEAD
-      @include('Professor.partials.sidebar')
-=======
       @include('professor.partials.sidebar')
->>>>>>> test
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->
@@ -55,9 +51,9 @@
               <nav>
                 <ol class="flex items-center gap-2">
                   <li>
-                    <a class="font-medium" href="index.html">Dashboard /</a>
+                    <a class="font-medium" href="index.html">Inicio /</a>
                   </li>
-                  <li class="font-medium text-primary">Tables</li>
+                  <li class="font-medium text-primary">Documentos</li>
                 </ol>
               </nav>
             </div>
@@ -99,14 +95,14 @@
                             <td
                                 class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
                             >
-                                <h5 class="font-medium text-black dark:text-white">Paito</h5>
+                                <h5 class="font-medium text-black dark:text-white">dziva_ngutu_1735944977.sql</h5>
                                 <!-- <p class="text-sm">$0.00</p> -->
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                 FET
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                <p class="text-black dark:text-white">Jan 13,2023</p>
+                                <p class="text-black dark:text-white">2025-01-03 22:56:17</p>
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                               <div class="flex items-center space-x-3.5">
@@ -128,9 +124,6 @@
                                       fill=""
                                   />
                                   </svg>
-                                </button>
-                                <button class="hover:text-primary">
-                                    edit
                                 </button>
                                 <button class="hover:text-danger">
                                     <svg
