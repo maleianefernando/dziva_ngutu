@@ -6,11 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-<<<<<<< HEAD
-      Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
-=======
       Registar Estudantes | Dziva Ngutu
->>>>>>> test
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
@@ -22,30 +18,17 @@
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
-<<<<<<< HEAD
-    <!-- ===== Preloader Start ===== -->
-    <include src="./partials/preloader.html"></include>
-    @include('admin.partials.preloader')
-    <!-- ===== Preloader End ===== -->
-    
-=======
   <!-- ===== Preloader Start ===== -->
   <include src="./partials/preloader.html"></include>
     @include('admin.partials.preloader')
     <!-- ===== Preloader End ===== -->
 
->>>>>>> test
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
         <!-- ===== Sidebar Start ===== -->
         <include src="./partials/sidebar.html"></include>
         @include('admin.partials.sidebar')
         <!-- ===== Sidebar End ===== -->
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> test
         <!-- ===== Content Area Start ===== -->
         <div
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
@@ -57,37 +40,25 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-<<<<<<< HEAD
-=======
             @if(Session('success'))
                 @include('components.success-alert')
             @elseif (session('error'))
                 @include('components.error-alert')
             @endif
->>>>>>> test
         <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
             <!-- Breadcrumb Start -->
             <div
             class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
-<<<<<<< HEAD
-            <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Formulário de Registo
-=======
             {{-- Mensagem de alerta --}}
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
                 Registar Estudante
->>>>>>> test
             </h2>
 
             <nav>
                 <ol class="flex items-center gap-2">
                 <li>
-<<<<<<< HEAD
-                    <a class="font-medium" href="index.html">Dashboard /</a>
-=======
                     <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
->>>>>>> test
                 </li>
                 <li class="font-medium text-primary">Registar Estudante</li>
                 </ol>
@@ -109,12 +80,8 @@
                             Registe o Estudante
                         </h3>
                     </div>
-<<<<<<< HEAD
-                    <form action="#">
-=======
                     <form action="{{ route('utilizadores.criar') }}" method="POST">
                         @csrf
->>>>>>> test
                         <div class="p-6.5">
                         <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
                             <div class="w-full xl:w-1/2">
@@ -126,12 +93,8 @@
                             <input
                                 type="text"
                                 placeholder="Primeiro Nome"
-<<<<<<< HEAD
-                                name=""
-=======
                                 name="name"
                                 value="{{ @old('name') }}"
->>>>>>> test
                                 class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                             </div>
@@ -145,15 +108,10 @@
                             <input
                                 type="text"
                                 placeholder="Apelido"
-<<<<<<< HEAD
-                                name=""
-                                class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-=======
                                 name="lastname"
                                 value="{{ @old('lastname') }}"
                                 class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 id="lastname"
->>>>>>> test
                             />
                             </div>
                         </div>
@@ -167,12 +125,8 @@
                             <input
                             type="email"
                             placeholder="abc@exemplo.ac.mz"
-<<<<<<< HEAD
-                            name=""
-=======
                             name="email"
                             value="{{ @old('email') }}"
->>>>>>> test
                             class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                         </div>
@@ -181,11 +135,7 @@
                             <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
                             >
-<<<<<<< HEAD
-                            Curso
-=======
                             Faculdade
->>>>>>> test
                             </label>
                             <div
                             x-data="{ isOptionSelected: false }"
@@ -195,15 +145,6 @@
                                 class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                                 :class="isOptionSelected && 'text-black dark:text-white'"
                                 @change="isOptionSelected = true"
-<<<<<<< HEAD
-                            >
-                                <option value="" class="text-body">
-                                -- Selecione o Curso
-                                </option>
-                                <option value="" class="text-body">USA</option>
-                                <option value="" class="text-body">UK</option>
-                                <option value="" class="text-body">Canada</option>
-=======
                                 name="faculty_id"
                                 id="faculty"
                             >
@@ -213,7 +154,6 @@
                                 @foreach ($faculties as $faculty)
                                 <option value="{{ $faculty->id }}" class="text-body">{{ $faculty->name }}</option>
                                 @endforeach
->>>>>>> test
                             </select>
                             <span
                                 class="absolute right-4 top-1/2 z-30 -translate-y-1/2"
@@ -239,8 +179,6 @@
                             </div>
                         </div>
 
-<<<<<<< HEAD
-=======
                         <div class="mb-4.5">
                             <label
                             class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -328,7 +266,6 @@
                             />
                         </div>
 
->>>>>>> test
                         <button
                             type="submit"
                             class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
@@ -350,8 +287,6 @@
     <!-- ===== Page Wrapper End ===== -->
 
     <script>
-<<<<<<< HEAD
-=======
     fillCourseSelect();
     createPassword();
 
@@ -409,7 +344,6 @@
         }
     }
 
->>>>>>> test
     function dropdown() {
         return {
         options: [],

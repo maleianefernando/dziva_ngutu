@@ -26,7 +26,6 @@
       <!-- ===== Sidebar Start ===== -->
       <include src="./partials/sidebar.html"></include>
       @include('student.partials.sidebar')
->>>>>>> test
       <!-- ===== Sidebar End ===== -->
 
       <!-- ===== Content Area Start ===== -->

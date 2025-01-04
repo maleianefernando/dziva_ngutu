@@ -72,11 +72,6 @@
                         Para ver Ficheiros Anteriormente Submetidos
                       </h3>
                       <div >
-<<<<<<< HEAD
-                        
-=======
-
->>>>>>> test
                         <div
                         x-data="{ isOptionSelected: false }"
                         class="relative z-20 bg-transparent dark:bg-form-input"
@@ -128,11 +123,6 @@
                             >
                                 Nome
                             </th>
-<<<<<<< HEAD
-                            
-=======
-
->>>>>>> test
                             <th class="px-2 py-4 font-medium text-black dark:text-white ">
                                 Ação
                             </th>

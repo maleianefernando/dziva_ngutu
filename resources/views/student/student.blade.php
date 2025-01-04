@@ -24,8 +24,7 @@
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
 
-        @include('student.partials.sidebar')
-      <!-- ===== Content Area Start ===== -->
+        
       <div
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
       >
@@ -75,6 +74,11 @@
                                 class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
                             >
                                 Ano
+                            </th>
+                            <th
+                                class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
+                            >
+                                Docente
                             </th>
                             <th
                                 class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"

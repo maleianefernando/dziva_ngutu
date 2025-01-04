@@ -6,11 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-<<<<<<< HEAD
-      Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
-=======
       Registar Faculdade | Dziva Ngutu
->>>>>>> test
     </title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
@@ -26,22 +22,12 @@
     <include src="./partials/preloader.html"></include>
     @include('admin.partials.preloader')
     <!-- ===== Preloader End ===== -->
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> test
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
         <!-- ===== Sidebar Start ===== -->
         <include src="./partials/sidebar.html"></include>
         @include('admin.partials.sidebar')
         <!-- ===== Sidebar End ===== -->
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> test
         <!-- ===== Content Area Start ===== -->
         <div
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
@@ -53,35 +39,24 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-<<<<<<< HEAD
-=======
             @if(Session('success'))
                 @include('components.success-alert')
             @elseif (session('error'))
                 @include('components.error-alert')
             @endif
->>>>>>> test
         <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
             <!-- Breadcrumb Start -->
             <div
             class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
-<<<<<<< HEAD
-                Formulário de Registo
-=======
                 Registar Faculdades
->>>>>>> test
             </h2>
 
             <nav>
                 <ol class="flex items-center gap-2">
                 <li>
-<<<<<<< HEAD
-                    <a class="font-medium" href="index.html">Dashboard /</a>
-=======
                     <a class="font-medium" href="{{ route('index') }}">Inicio /</a>
->>>>>>> test
                 </li>
                 <li class="font-medium text-primary">Registar Faculdade</li>
                 </ol>
@@ -103,12 +78,8 @@
                             Registe a Faculdade
                         </h3>
                     </div>
-<<<<<<< HEAD
-                    <form action="#">
-=======
                     <form action="{{ route('faculdade.criar') }}" method="POST">
                         @csrf
->>>>>>> test
                         <div class="p-6.5">
                             <div class="mb-4.5">
                                 <label
@@ -118,21 +89,12 @@
                                 </label>
                                 <input
                                     type="text"
-<<<<<<< HEAD
-                                    placeholder="Nome"
-                                    name=""
-                                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                />
-                            </div>
-                            
-=======
                                     placeholder="Ex: Faculdade De Engenharias e Tecnologias"
                                     name="name"
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
 
->>>>>>> test
                             <div class="mb-4.5">
                                 <label
                                     class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -141,21 +103,12 @@
                                 </label>
                                 <input
                                     type="text"
-<<<<<<< HEAD
-                                    placeholder="Maputo/exemplo"
-                                    name=""
-                                    class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                />
-                            </div>
-                            
-=======
                                     placeholder="Ex: Maputo, Av. Trabalho nr 1132"
                                     name="location"
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>
 
->>>>>>> test
                             <div class="mb-4.5">
                                 <label
                                     class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -165,11 +118,7 @@
                                 <input
                                     type="text"
                                     placeholder="8* 111 1111"
-<<<<<<< HEAD
-                                    name=""
-=======
                                     name="phone"
->>>>>>> test
                                     class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                 />
                             </div>

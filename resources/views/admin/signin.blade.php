@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+    <title> Log In</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
 
   <body
@@ -16,54 +17,44 @@
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
         <!-- ===== Main Content Start ===== -->
-        <main>
+        <main class="w-full h-screen flex items-center justify-center bg-black-2">
           <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
 
             <!-- ====== Forms Section Start -->
             <div
-              class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+              class="border rounded-lg border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
             >
               <div class="flex flex-wrap items-center">
                 <div class="hidden w-full xl:block xl:w-1/2">
                   <div class="px-26 py-17.5 text-center">
-                    <a class="mb-5.5 inline-block" href="index.html">
-                      <img
-                        class="hidden dark:block"
-                        src="./images/logo/logo.svg"
-                        alt="Logo"
-                      />
-                      <img
-                        class="dark:hidden"
-                        src="./images/logo/logo-dark.svg"
-                        alt="Logo"
-                      />
-                    </a>
-
-                    <p class="font-medium 2xl:px-20">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                      suspendisse.
-                    </p>
 
                     <span class="mt-15 inline-block">
                       <img
-                        src="./images/illustration/illustration-03.svg"
+                        src="{{asset('images/logo/up.png')}}"
                         alt="illustration"
+                        style="opacity: .9"
                       />
                     </span>
+                    
+                    <p class="font-medium 2xl:px-20">
+                      Seja bem vindo(a) a plataforma de gestão de material acadêmico.
+                    </p>
+
                   </div>
                 </div>
                 <div
                   class="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2"
                 >
                   <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
-                    <span class="mb-1.5 block font-medium">Start for free</span>
+                    <span class="mb-1.5 block font-medium">Comece</span>
                     <h2
                       class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2"
                     >
-                      Sign In to TailAdmin
+                      Fazendo o Login
                     </h2>
 
-                    <form>
+                    <form method="POST" action="{{ route('login') }}">
+                      @csrf
                       <div class="mb-4">
                         <label
                           class="mb-2.5 block font-medium text-black dark:text-white"
@@ -74,7 +65,9 @@
                             type="email"
                             placeholder="Insira o email"
                             class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            name="email"
                           />
+                          
 
                           <span class="absolute right-4 top-4">
                             <svg
@@ -94,6 +87,7 @@
                             </svg>
                           </span>
                         </div>
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
                       </div>
 
                       <div class="mb-6">
@@ -105,6 +99,7 @@
                           <input
                             type="password"
                             placeholder="Password"
+                            name="password"
                             class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                           />
 
@@ -130,6 +125,7 @@
                             </svg>
                           </span>
                         </div>
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                       </div>
 
                       <div class="mb-5">
