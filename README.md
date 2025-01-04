@@ -30,7 +30,7 @@ git clone https://github.com/maleianefernando/dziva_ngutu
 
 **Instalar Dependencias**
 
-1. Use o comando : <code>composer update</code> para instalar as dependências do composer
+1. Use o comando : <code>composer install</code> para instalar as dependências do composer
 
 3. Use o comando : <code>npm install</code> para instalar dependencies necessárias
 
