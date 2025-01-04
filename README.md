@@ -1,4 +1,4 @@
-```bash 
+```bash
 Dziva Ngutu -  Sitema de Gestão de Material Acadêmico  
 ```
 
@@ -8,46 +8,49 @@ Dziva Ngutu -  Sitema de Gestão de Material Acadêmico
 
 Certifique-se de ter intalado e configurado no teu computador os seguintes componentes:
 
-1. **XAMPP** (versão v3.3.0 ou superior), baixe no [site oficial](https://www.apachefriends.org/index.html).
+1. **XAMPP** (versão v3.3.0 ou superior), baixe no **[site oficial](https://www.apachefriends.org/index.html)**.
 2. **PHP** versão **8.2** ou **superior**.
-3. **Node JS** versão **14.16** ou **superior**
-4. Um navegador web para acessar a aplicação.
+3. **Composer** apartir do site **[https://www.getcomposer.org/download](https://www.getcomposer.org/download).**
+4. **Node JS** versão **14.16** ou **superior.**
+5. Um navegador web para acessar a aplicação.
 
 ---
 
 # Instalação
 
 ### Xampp Instalado
-No xampp faça de um START dos seguintes módulos **Apache** e **MySQL** 
+No xampp faça de um START dos seguintes módulos **Apache** e **MySQL**
 
 ### Configuração da App
 
-Use o terminal na raíz do projecto e clone o repositório usando o seguinte comando. 
+Use o terminal na raíz do projecto e clone o repositório usando o seguinte comando.
 ```bash
 git clone https://github.com/maleianefernando/dziva_ngutu
 ```
-1. Use o comando : <code>composer install</code> para instalar o composer
 
-2. Renomeie o arquivo na raíz do projecto <code>.env.example</code> para ``` .env ```
+**Instalar Dependencias**
 
-- Use o comando : <code>npm install</code> para instalar dependencies necessárias
+1. Use o comando : <code>composer update</code> para instalar as dependências do composer
 
-- Use o comando :  ``` npm install -D tailwindcss postcss autoprefixer ``` para instalar as dependências do tailwind css
+3. Use o comando : <code>npm install</code> para instalar dependencies necessárias
 
-- Use o comando :  ``` npx tailwindcss init -p ``` para inicializar o tailwind css
+4. Use o comando :  ``` npm install -D tailwindcss postcss autoprefixer ``` para instalar as dependências do tailwind css
 
-- Use o comando :  ``` npm run build ```
+5. Use o comando :  ``` npm run build ``` para fazer o build do front-end
 
-- Use o comando : ``` npm run dev ``` para testar o tailwind.
+**Rodar a App**
 
+1. Renomeie o arquivo "<code>.env.example</code>" para "``` .env ```".
 
-- Use o comando : <code>php artisan serve</code> para correr a aplicação no navegador
+2. Use o comando:  <code>php artisan db:seed</code> para criar um utilizador padrão.
+
+3. Use o comando : <code>php artisan serve</code> para correr a aplicação no navegador.
 
 ---
 
-# Credenciais para teste 
+# Credenciais para teste
 Temos o utilizador **admin** como administrador:
 - email: **admin@gmail.com**
-- Password: **adminadmin**
+- Password: **passpass**
 
 ---
