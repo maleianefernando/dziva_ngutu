@@ -8,8 +8,11 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
+use App\Models\Document;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +22,7 @@ Route::get('/', function () {
     } else if($user->type === 'docente'){
         return view('professor.doc-list');
     } else if($user->type === 'estudante'){
+        return redirect('estudante/inicio');
         return view('student.student');
     } else {
         Auth::logout();
@@ -71,6 +75,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/search_course/{faculty_id}', [CourseController::class, 'search_by_faculty']);
     Route::get('/search_subject/{course_id}', [SubjectController::class, 'search_by_course']);
+    Route::get('/search_subject_by_year/{year}', [SubjectController::class, 'search_by_year']);
 
     Route::get('/search_files/{subject_id}', [DocumentController::class, 'search_by_subject']);
     Route::get('file/view/{filename}', [DocumentController::class, 'print'])->name('file.view');
@@ -127,17 +132,15 @@ Route::get('/professor/listar', function () {
     return view('professor.doc-list');
 })->name('professor.materialview');
 
-Route::get('/estudante/inicio', function () {
-    return view('student.student');
-})->name('student.home');
+Route::get('/estudante/inicio', [function () {
+    $user = User::where('id', Auth::user()->id)->first();
+    $documents = Document::where('course_id', $user->course_id)->orderByDesc('created_at')->get();
+    return view('student.student', compact('documents'));
+}])->name('student.home');
 
-Route::get('/estudante/material', function () {
-    return view('student.doc-list');
-})->name('student.material');
+Route::get('/estudante/material', [DocumentController::class, 'indexStudent'])->name('student.material');
 
-Route::get('/estudante/perfil', function () {
-    return view('student.settings');
-})->name('estudante.perfil');
+Route::get('/estudante/perfil', [ProfileController::class, 'editStudent'])->name('estudante.perfil');
 
 Route::get('/professor/perfil', function () {
     return view('professor.settings');

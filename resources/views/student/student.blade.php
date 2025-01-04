@@ -30,7 +30,7 @@
       >
         <!-- ===== Header Start ===== -->
         <include src="./partials/header.html" />
-        @include('student.partials.header')
+        @include('admin.partials.header')
         <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
@@ -73,7 +73,7 @@
                             <th
                                 class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
                             >
-                                Faculdade
+                                Ano
                             </th>
                             <th
                                 class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
@@ -83,7 +83,12 @@
                             <th
                                 class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
                             >
-                                Ultima Atulização
+                                Semestre
+                            </th>
+                            <th
+                                class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
+                            >
+                                Última Actualização
                             </th>
                             <th class="px-4 py-4 font-medium text-black dark:text-white">
                                 Ação
@@ -92,21 +97,28 @@
                         </thead>
                       </thead>
                       <tbody>
+                        @foreach ($documents as $d)
                         <tr>
                             <td
                                 class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
                             >
-                                <h5 class="font-medium text-black dark:text-white">Paito</h5>
+                                <h5 class="font-medium text-black dark:text-white">
+                                    {{ $d->file_name }}
+                                </h5>
                                 <!-- <p class="text-sm">$0.00</p> -->
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                FET
+                                {{-- {{ $d->file_name }} --}}
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                admin admin
+                                <p class="text-black dark:text-white">
+                                    {{-- {{  }} --}}
+                                </p>
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                <p class="text-black dark:text-white">2025-01-03 22:56:17</p>
+                                <p class="text-black dark:text-white">
+                                    {{ $d->created_at }}
+                                </p>
                             </td>
                             <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                               <div class="flex items-center space-x-3.5">
@@ -156,12 +168,13 @@
                               </div>
                             </td>
                         </tr>
+                        @endforeach
                       </tbody>
                       </table>
                   </div>
               </div>
 
-              
+
                 </div>
                 </div>
               <!-- ====== Table Three End -->
