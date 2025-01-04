@@ -24,14 +24,15 @@
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
 
-        
+        @include('student.partials.sidebar')
+
       <div
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
       >
-        <!-- ===== Header Start ===== -->
-        <include src="./partials/header.html" />
-        @include('admin.partials.header')
-        <!-- ===== Header End ===== -->
+      <!-- ===== Header Start ===== -->
+      {{-- <include src="./partials/header.html" /> --}}
+      @include('admin.partials.header')
+      <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
         <main>
@@ -75,7 +76,7 @@
                             >
                                 Cadeira
                             </th>
-                            
+
                             <th
                                 class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
                             >
@@ -113,7 +114,7 @@
                                 @foreach ($subject as $s)
                                     @if ($s->id == $d->subject_id)
                                         <p class="text-black dark:text-white">
-                                            {{ $s->name }} 
+                                            {{ $s->name }}
                                         </p>
                                     @endif
                                 @endforeach
@@ -123,7 +124,7 @@
                                   @foreach ($subject as $s)
                                     @if ($s->id == $d->subject_id)
                                       <p class="text-black dark:text-white">
-                                        {{ $s->year }} ano 
+                                        {{ $s->year }} ano
                                       </p>
                                     @endif
                                   @endforeach
@@ -134,7 +135,7 @@
                                   @foreach ($subject as $s)
                                     @if ($s->id == $d->subject_id)
                                       <p class="text-black dark:text-white">
-                                        {{ $s->semester }}º Semestre 
+                                        {{ $s->semester }}º Semestre
                                       </p>
                                     @endif
                                   @endforeach

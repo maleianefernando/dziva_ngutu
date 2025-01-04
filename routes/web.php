@@ -23,7 +23,7 @@ Route::get('/', function () {
         return view('professor.doc-list');
     } else if($user->type === 'estudante'){
         return redirect('estudante/inicio');
-        return view('student.student');
+        // return view('student.student');
     } else {
         Auth::logout();
         return view('auth.login');
@@ -33,11 +33,11 @@ Route::get('/', function () {
 Route::get('/redirect_user_by_role', function (){
     $user = Auth::user();
     if($user->role === 'admin'){
-        return view('admin.doc-upload');
+        return redirect('/admin/materials');
     } else if($user->type === 'docente'){
         return view('professor.doc-list');
     } else if($user->type === 'estudante'){
-        return view('student.student');
+        return redirect('estudante/inicio');
     } else {
         Auth::logout();
         return view('auth.login');

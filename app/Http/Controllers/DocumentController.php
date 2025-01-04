@@ -32,8 +32,8 @@ class DocumentController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $documents = Document::where('course_id', $user->course_id)->orderByDesc('created_at')->get();
         $subject = Subject::all();
-        return $subject;
-        // return view('student.doc-list', compact('documents', 'subject'));
+        // return $subject;
+        return view('student.doc-list', compact('documents', 'subject'));
     }
 
     public function search_by_subject ($subject_id){
