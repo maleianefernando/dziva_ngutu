@@ -26,9 +26,11 @@ Use o terminal na raíz do projecto e clone o repositório usando o seguinte com
 ```bash
 git clone https://github.com/maleianefernando/dziva_ngutu
 ```
-- Use o comando : <code>npm install</code> para instalar dependencies necessárias
+1. Use o comando : <code>composer install</code> para instalar o composer
 
-- Use o comando : <code>composer install</code> para instalar o composer
+2. Renomeie o arquivo na raíz do projecto <code>.env.example</code> para ``` .env ```
+
+- Use o comando : <code>npm install</code> para instalar dependencies necessárias
 
 - Use o comando :  ``` npm install -D tailwindcss postcss autoprefixer ``` para instalar as dependências do tailwind css
 
@@ -38,7 +40,6 @@ git clone https://github.com/maleianefernando/dziva_ngutu
 
 - Use o comando : ``` npm run dev ``` para testar o tailwind.
 
-- Renomeie o arquivo na raíz do projecto <code>.env.example</code> para ``` .env ```
 
 - Use o comando : <code>php artisan serve</code> para correr a aplicação no navegador
 
