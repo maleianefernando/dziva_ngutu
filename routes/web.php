@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $user = Auth::user();
     if($user->role === 'admin'){
-        return view('admin.doc-upload');
+        return redirect()->route('documento.listar');
     } else if($user->type === 'docente'){
         return view('professor.doc-list');
     } else if($user->type === 'estudante'){
@@ -105,7 +105,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix('/documentos')->group(function () {
-        Route::get('/', [DocumentController::class, 'index']);
+        Route::get('/', [DocumentController::class, 'index'])->name('documento.listar');
         Route::post('/criar', [DocumentController::class, 'store'])->name('documentos.criar');
         Route::get('/{id}', [DocumentController::class, 'show']);
         Route::put('/editar/{id}', [DocumentController::class, 'update']);
